@@ -1,8 +1,3 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Stargazers][stars-shield]][stars-url]
-[![GPL-3.0 License][license-shield]][license-url]
-[![hackeri](https://img.shields.io/github/downloads/clangremlini/fet-loader/total.svg?style=flat-square)](https://github.com/clangremlini/fet-loader/releases) 
-
 <br />
 <p align="center">
   <a href="https://fetloader.xyz">
@@ -24,11 +19,8 @@
 - A more shitcode
 
 ## How to compile
-- Clone the repository with the command `git clone https://github.com/clangremlini/fet-loader | cd fet-loader | git submodule update --init --recursive`
+- Clone the repository with the command `git clone https://gitlab.com/FETLoader/FETLoader | cd fet-loader | git submodule update --init --recursive`
 - Run `COMPILE.bat`
-
-## Frequent problems and their solutions
-- See [this](https://github.com/clangremlini/fet-loader/discussions?discussions_q=category%3A%22Solved+bugs%22)
 
 ## Contributing
 
@@ -57,10 +49,3 @@ Distributed under the MIT License. See `LICENSE` for more information.
 - Custom repo: [zrn1x](https://github.com/oliyase)
 - Big thanks to MORGENSHTERN and his tracks
 
-
-[contributors-shield]: https://img.shields.io/github/contributors/clangremlini/fet-loader.svg?style=flat-square
-[contributors-url]: https://github.com/clangremlini/fet-loader/graphs/contributors
-[stars-shield]: https://img.shields.io/github/stars/clangremlini/fet-loader.svg?style=flat-square
-[stars-url]: https://github.com/clangremlini/fet-loader/stargazers
-[license-shield]: https://img.shields.io/github/license/clangremlini/fet-loader.svg?style=flat-square
-[license-url]: https://github.com/clangremlini/fet-loader/blob/master/LICENSE.txt
