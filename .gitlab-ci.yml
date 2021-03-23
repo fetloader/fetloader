@@ -10,4 +10,4 @@ build:
         paths:
         - loader.exe
 
-tag: [windows]
+tags: [windows]
