@@ -1,0 +1,12 @@
+before_script:
+    - git submodule update --init --recursive
+    - choco install autohotkey.install --params='/DefaultVer:A32'
+
+build:
+    stage: build
+    script:
+    - ./COMPILE.bat
+    artifacts:
+        paths:
+        - loader.exe
+
