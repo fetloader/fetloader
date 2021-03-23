@@ -140,11 +140,12 @@ Inject(neutron, event)
     }
     if (PID > 0 and event = "Custom")
     {
-        IniRead, injectMethod, %A_AppData%\FET Loader\cheats.ini, inject, %event%
+        IniRead, injectMethod, %A_AppData%\FET Loader\cheats.ini, inject, Custom
         IniRead, forceLoadLibrary, %A_AppData%\FET Loader\config.ini, settings, forceLoadLibrary
         if (forceLoadLibrary = "true")
         {
-            injectMethod := "LoadLibrary"
+            injectMethod := "loadlibrary"
+            Logging(1,"Force loadlibrary enabled")
         }
         MsgBox, 4, %script%, %string_warning_custom_dll%
         IfMsgBox, Yes
@@ -159,7 +160,7 @@ Inject(neutron, event)
             else
             {
                 Logging(1,"Injecting custom dll...")
-                if (injectMethod = "standart")
+                if (injectMethod = "loadlibrary")
                 {
                     Logging(1,"Running emb...")
                     CmdLine = emb.exe
