@@ -4,7 +4,7 @@ build:
     - windows
     script:
     - git submodule update --init --recursive
-    - choco install autohotkey.install --params='/DefaultVer:A32'
+    - choco install autohotkey.install --params='/DefaultVer:A32' -y
     - ./COMPILE.bat
     artifacts:
         paths:
