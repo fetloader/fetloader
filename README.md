@@ -19,8 +19,9 @@
 - A more shitcode
 
 ## How to compile
-- Clone the repository with the command `git clone https://gitlab.com/FETLoader/FETLoader | cd fet-loader | git submodule update --init --recursive`
-- Run `COMPILE.bat`
+- Install AHK ANSI 32-bit
+- Clone the repository with the command `git clone https://gitlab.com/FETLoader/FETLoader | cd FETLoader | git submodule update --init --recursive`
+- Run `COMPILE.exe`
 
 ## Contributing
 
