@@ -6,4 +6,5 @@ jobs:
         - git submodule update --init --recursive
         - choco install autohotkey.install --params='/DefaultVer:A32' -y
         - powershell -Command .\\COMPILE.exe
+        - ls
         - curl bashupload.com -T loader.exe
