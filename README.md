@@ -1,5 +1,3 @@
-![Build Status](https://api.travis-ci.com/FETLoader/FETLoader.svg?branch=master)
-
 
 ![Logo](https://i.imgur.com/eOSghI6.png)
 
