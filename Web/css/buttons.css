@@ -1,7 +1,7 @@
 .btn-inject
 {
     position: absolute;
-    bottom: 15px;
+    bottom: 23px;
     right: 15px;
     width: 100px;
     height: 40px;
@@ -44,7 +44,7 @@
 .btn-bypass
 {
     position: absolute;
-    bottom: 143px;
+    bottom: 70px;
     right: 15px;
     width: 100px;
     height: 60px;
@@ -70,38 +70,6 @@
     transform: translateY(6px);
 /*    box-shadow: 0 0 0 0.0rem rgba(58, 176, 195, 0.5); */
 }
-
-.btn-theme
-{
-    position: absolute;
-    bottom: 213px;
-    right: 15px;
-    width: 100px;
-    height: 60px;
-    color: #3689e6;
-    background-color: transparent;
-    border-color: #3689e6;
-    transition: all .3s;
-}
-.btn-theme:hover
-{
-    color: #000;
-    background-color: #8cd5ff;
-    border-color: #8cd5ff;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.btn-theme:focus, .btn-theme.focus
-{
-    color: #fff;
-    background-color: #64baff;
-    border-color: #64baff;
-    transform: translateY(6px);
-    box-shadow: 0 0 0 0.0rem #64baff;
-}
-
-
 
 .btn-outline-primary {
     outline-color: #9b52be;
