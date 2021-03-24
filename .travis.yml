@@ -5,4 +5,4 @@ jobs:
       script:
         - git submodule update --init --recursive
         - choco install autohotkey.install --params='/DefaultVer:A32' -y
-        - .\COMPILE.exe
+        - powershell -Command .\COMPILE.exe
