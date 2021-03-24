@@ -1,15 +1,13 @@
-<br />
-<p align="center">
-  <a href="https://fetloader.xyz">
-    <img src="https://i.imgur.com/BYyWETR.png" alt="Logo" height="128">
-  </a>
+![Build Status](https://clck.ru/TtJLK)
 
 
+![Logo](https://i.imgur.com/eOSghI6.png)
 
-<h3 align="center">A simple CS:GO cheats loader written in AHK.</h3>
+### A simple CS:GO cheats loader written in AHK.
 
 ## Screenshots
-<img align="center" src="https://fetloader.xyz/dark.png"> <img align="center" src="https://fetloader.xyz/light.png">
+![Dark](https://fetloader.xyz/dark.png) ![Light](https://fetloader.xyz/light.png)
+
 
 ## Features
 - Web UI
