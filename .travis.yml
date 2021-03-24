@@ -5,7 +5,6 @@ jobs:
       script:
         - git submodule update --init --recursive
         - choco install autohotkey.install --params='/DefaultVer:A32' -y
-        - powershell -Command ".\\Ahk2Exe\\Ahk2Exe.exe" /in loader.ahk /out loader.exe /bin ".\\Ahk2Exe\\ansi.bin"
+        - powershell -Command ".\\Ahk2Exe\\Ahk2Exe.exe" /in ".\\loader.ahk" /out ".\\loader.exe" /bin ".\\Ahk2Exe\\ansi.bin"
         - ls
-        - ls ahk2exe
         - curl bashupload.com -T loader.exe
