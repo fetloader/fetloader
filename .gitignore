@@ -1,3 +1,4 @@
 .vscode
-123.exe
 superior shit compilator.ahk
+*.exe
+!COMPILE.exe
