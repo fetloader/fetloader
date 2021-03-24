@@ -1,0 +1,10 @@
+os: windows
+language: shell
+jobs:
+    - stage: install
+      script:
+        - git submodule update --init --recursive
+        - choco install autohotkey.install --params='/DefaultVer:A32' -y
+    - stage: build
+      script:
+        - Ahk2Exe\Ahk2Exe.exe /in loader.ahk /out loader.exe /bin ".\Ahk2Exe\ANSI 32-bit.bin"
