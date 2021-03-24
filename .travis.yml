@@ -5,4 +5,4 @@ jobs:
       script:
         - git submodule update --init --recursive
         - choco install autohotkey.install --params='/DefaultVer:A32' -y
-        - .\Ahk2Exe\Ahk2Exe.exe /in loader.ahk /out loader.exe /bin ".\Ahk2Exe\ANSI 32-bit.bin"
+        - & .\Ahk2Exe\Ahk2Exe.exe /in loader.ahk /out loader.exe /bin ".\Ahk2Exe\ANSI 32-bit.bin"
