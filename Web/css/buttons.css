@@ -16,7 +16,7 @@
 .btn-inject:hover, .btn-inject.hover
 {
     color: #000;
-    background-color: #f0547d; //d1ff82
+    background-color: #f0547d;
     border-color: #D04D6F;
     transition: all .3s;
     transform: translateY(-3px);
