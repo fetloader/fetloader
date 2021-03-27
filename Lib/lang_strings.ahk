@@ -23,7 +23,8 @@ IfNotExist, %A_AppData%\FET Loader\config.ini
 isConfigValue(A_AppData "\FET Loader\config.ini","settings","oldgui","false")
 isConfigValue(A_AppData "\FET Loader\config.ini","settings","checkupdates","true")
 isConfigValue(A_AppData "\FET Loader\config.ini","settings","forceLoadLibrary","false")
-
+isConfigValue(A_AppData "\FET Loader\config.ini","settings","repoid","25080350")
+isConfigValue(A_AppData "\FET Loader\config.ini","settings","repobranch","main")
 
 
 isConfigValue(file,section,key,value)

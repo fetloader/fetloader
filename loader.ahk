@@ -25,13 +25,13 @@
 ;@Ahk2Exe-SetDescription        A simple cheats loader written in AHK.
 ;@Ahk2Exe-SetCopyright          Copyright (C) 2021 clownless
 ;@Ahk2Exe-SetCompanyName        Maxim K.
-;@Ahk2Exe-SetProductVersion     3.2.3.0
-;@Ahk2Exe-SetVersion            3.2.3.0
+;@Ahk2Exe-SetProductVersion     3.3.0.0
+;@Ahk2Exe-SetVersion            3.3.0.0
 ;@Ahk2Exe-SetMainIcon           icon.ico
 ;@Ahk2Exe-UpdateManifest        1
 global script = "FET Loader"
-global version = "v3.2.3"
-global build_status = "release"
+global version = "v3.3.0"
+global build_status = "debug"
 global pastebin_key = "YOUR_PASTEBIN_API_KEY"
 global times = 3 ; piece of shit, don't touch
 
@@ -50,6 +50,7 @@ SetBatchLines, -1
 CoordMode, Mouse, Screen
 
 FileDelete, %A_AppData%\FET Loader\Web\main.*
+FileDelete, %A_AppData%\FET Loader\Web\js\iniparser.*
 FileDelete, %A_AppData%\FET Loader\cheats.ini
 FileDelete, %A_AppData%\FET Loader\*.dll
 
@@ -64,6 +65,9 @@ IniRead, cheatlist, %A_AppData%\FET Loader\cheats.ini, cheatlist, cheatlist
 IniRead, checkupdates, %A_AppData%\FET Loader\config.ini, settings, checkupdates
 IniRead, theme, %A_AppData%\FET Loader\config.ini, settings, theme
 IniRead, forceLoadLibrary, %A_AppData%\FET Loader\config.ini, settings, forceLoadLibrary
+IniRead, repoid, %A_AppData%\FET Loader\config.ini, settings, repoid
+IniRead, repobranch, %A_AppData%\FET Loader\config.ini, settings, repobranch
+
 
 if (theme != "ERROR")
 {
@@ -122,7 +126,7 @@ Logging(1,"Creating folders and downloading files...")
 IfNotExist, %A_AppData%\FET Loader\cheats.ini
 {	
     Logging(1,"- Getting cheat list...")
-    UrlDownloadToFile, https://gitlab.com/api/v4/projects/25080350/repository/files/cheats.ini/raw?ref=main, %A_AppData%\FET Loader\cheats.ini
+    UrlDownloadToFile, https://gitlab.com/api/v4/projects/%repoid%/repository/files/cheats.ini/raw?ref=%repobranch%, %A_AppData%\FET Loader\cheats.ini
     Logging(1,"......done.")
 }
 
@@ -179,7 +183,7 @@ FileCreateDir, Web
 FileCreateDir, Web\js
 FileCreateDir, Web\css
 FileCreateDir, Web\css\fonts
-FileInstall, Web\js\iniparser.js, Web\js\iniparser.js, 1
+FileInstall, Web\js\iniparser.js, Web\js\iniparser.bak, 1
 FileInstall, Web\js\bootstrap-4.4.1.js, Web\js\bootstrap-4.4.1.js, 1
 FileInstall, Web\css\bootstrap-4.4.1.css, Web\css\bootstrap-4.4.1.css, 1
 FileInstall, Web\js\jquery-3.4.1.min.js, Web\js\jquery-3.4.1.min.js, 1
@@ -245,6 +249,10 @@ if (oldgui = "true")
 }
 else
 {
+    newrepo = %repoid%/repository/files/cheats.ini/raw?ref=%repobranch%
+    FileRead, gui, Web\js\iniparser.bak
+    StringReplace, newgui, gui, 25080350/repository/files/cheats.ini/raw?ref=main, %newrepo%, All
+    FileAppend, %newgui%, Web\js\iniparser.js
     IniRead, cheatlist, %A_AppData%\FET Loader\cheats.ini, cheatlist, cheatlist
 	StringSplit, cheatss, cheatlist, |
 	cheatsCount := cheatss0 

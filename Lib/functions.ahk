@@ -63,6 +63,8 @@ Inject(neutron, event)
     if (PID > 0 and event != "Custom" and event != "CornerStone") ;govnokod mne poxui
     {
         IniRead, dll, %A_AppData%\FET Loader\cheats.ini, cheats, %event%
+        IniRead, repoid, %A_AppData%\FET Loader\config.ini, settings, repoid
+        IniRead, repobranch, %A_AppData%\FET Loader\config.ini, settings, repobranch
         IniRead, forceLoadLibrary, %A_AppData%\FET Loader\config.ini, settings, forceLoadLibrary
         IniRead, injectMethod, %A_AppData%\FET Loader\cheats.ini, inject, %event%
         if (forceLoadLibrary = "true")
@@ -76,8 +78,9 @@ Inject(neutron, event)
         {   
             IfNotExist, %A_AppData%\FET Loader\%dll%
             {
-                Logging(1,"Trying to download " dll " from https://gitlab.com/FETLoader/dll-repo/raw/main/" dll " to " A_AppData "\FET Loader\" dll)
-                UrlDownloadToFile, https://gitlab.com/api/v4/projects/25080350/repository/files/%dll%/raw?ref=main, %A_AppData%\FET Loader\%dll%
+                Logging(1,"Trying to download " dll " to " A_AppData "\FET Loader\" dll)
+                UrlDownloadToFile, https://gitlab.com/api/v4/projects/%repoid%/repository/files/%dll%/raw?ref=%repobranch%, %A_AppData%\FET Loader\%dll%
+                Logging(1,"https://gitlab.com/api/v4/projects/" repoid "/repository/files/" dll "/raw?ref=" repobranch)
                 if (ErrorLevel = "0")
                 {
                     Logging(1, "done.")
