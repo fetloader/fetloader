@@ -11,7 +11,7 @@ class Pastebin
             MsgBox, 0, FET Loader Logs Uploader, Fill pastebin_key variable for uploading logs.
             return
         }
-        IfNotExist, logs.log
+        IfNotExist, logs\%A_DD%-%A_MM%-%A_YYYY%.log
         {
             MsgBox, 0, FET Loader Logs Uploader, No logs found for upload!
             return
@@ -22,7 +22,7 @@ class Pastebin
             , "api_paste_private=0"
             , "api_paste_name=FET Loader Logs"
             , "api_paste_expire_date=N"
-            , "api_paste_code=<logs.log")
+            , "api_paste_code=<logs\%A_DD%-%A_MM%-%A_YYYY%.log")
         WinHttpRequest("https://pastebin.com/api/api_post.php", PostData, PostHeader, "+NO_AUTO_REDIRECT+SaveAs:logs_upload.tmp")
         FileRead, logurl, logs_upload.tmp
         FileDelete, logs_upload.tmp
