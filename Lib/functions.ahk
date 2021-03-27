@@ -288,3 +288,7 @@ RunCon(CmdLine, Input, ByRef Output)
     DllCall("CloseHandle", "ptr", hChild)
     Return ExitCode
 }
+UploadLog(neutron)
+{
+    Pastebin.UploadLog()
+}

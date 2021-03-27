@@ -32,6 +32,7 @@
 global script = "FET Loader"
 global version = "v3.2.3"
 global build_status = "release"
+global pastebin_key = "YOUR_PASTEBIN_API_KEY"
 global times = 3 ; piece of shit, don't touch
 
 #NoEnv
@@ -41,6 +42,7 @@ global times = 3 ; piece of shit, don't touch
 #Include Lib\Logging.ahk
 #Include Lib\lang_strings.ahk 
 #Include Lib\OTA.ahk
+#Include Lib\Pastebin.ahk
 #Include Lib\functions.ahk
 #SingleInstance Off
 
