@@ -25,12 +25,12 @@
 ;@Ahk2Exe-SetDescription        A simple cheats loader written in AHK.
 ;@Ahk2Exe-SetCopyright          Copyright (C) 2021 clownless
 ;@Ahk2Exe-SetCompanyName        Maxim K.
-;@Ahk2Exe-SetProductVersion     3.3.0.0
-;@Ahk2Exe-SetVersion            3.3.0.0
+;@Ahk2Exe-SetProductVersion     3.3.1.0
+;@Ahk2Exe-SetVersion            3.3.1.0
 ;@Ahk2Exe-SetMainIcon           icon.ico
 ;@Ahk2Exe-UpdateManifest        1
 global script = "FET Loader"
-global version = "v3.3.0"
+global version = "v3.3.1"
 global build_status = "release"
 global pastebin_key = "YOUR_PASTEBIN_API_KEY"
 global times = 3 ; piece of shit, don't touch
@@ -44,6 +44,7 @@ global times = 3 ; piece of shit, don't touch
 #Include Lib\OTA.ahk
 #Include Lib\Pastebin.ahk
 #Include Lib\functions.ahk
+#Include Lib\RegRead64.ahk
 #SingleInstance Off
 
 SetBatchLines, -1
@@ -146,11 +147,13 @@ Logging(1,"done.")
 
 Logging(1, "")
 Logging(1,"---ENV---")
-Logging(1,"OS: "winedition)
+
 if (A_Is64bitOS = true) {
     Logging(1,"OS Arch: x64")
+    Logging(1,"OS: "RegRead64("HKEY_LOCAL_MACHINE", "SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductName"))
 } else {
     Logging(1,"OS Arch: x86")
+    Logging(1,"OS: "winedition)
 }
 if (A_OSVersion != "WIN_8.1")
 {
