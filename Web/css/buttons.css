@@ -13,7 +13,7 @@
     transition: all .3s;
 }
 
-.btn-inject:hover, .btn-inject.hover
+.btn-inject:hover
 {
     color: #000;
     background-color: #f0547d;
@@ -33,7 +33,7 @@
     transform: none;
 }
 
-.btn-inject:focus, .btn-inject.focus
+.btn-inject:focus
 {
     color: #fff;
     background-color: #D04D6F;
@@ -72,24 +72,24 @@
 }
 
 .btn-outline-primary {
-    outline-color: #9b52be;
-    border-color: #9b52be;
+    outline-color: #9b52be !important;
+    border-color: #9b52be !important;
     box-shadow: none!important;
     color: #FFFFFF;
 }
 
-.btn-outline-primary:hover {
-    background-color: #9b52be;
-    border-color: #9b52be;
+.btn-outline-primary:hover{
+    background-color: #9b52be !important;
+    border-color: #9b52be !important;
     color: #000000;
     box-shadow: none!important;
 }
 
-.btn-outline-primary:focus, .btn-outline-primary:active {
-    background-color: #F94D35;
+.btn-outline-primary:active, .btn-outline-primary.active {
+    background-color: #6f42c1 !important;
     color: #ffffff;
     box-shadow: none!important;
-    border-color: #F94D35;
+    border-color: #6f42c1 !important;
 }
 
 @keyframes moveInBottom {

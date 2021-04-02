@@ -187,9 +187,9 @@ FileCreateDir, Web\js
 FileCreateDir, Web\css
 FileCreateDir, Web\css\fonts
 FileInstall, Web\js\iniparser.js, Web\js\iniparser.bak, 1
-FileInstall, Web\js\bootstrap-4.4.1.js, Web\js\bootstrap-4.4.1.js, 1
-FileInstall, Web\css\bootstrap-4.4.1.css, Web\css\bootstrap-4.4.1.css, 1
-FileInstall, Web\js\jquery-3.4.1.min.js, Web\js\jquery-3.4.1.min.js, 1
+FileInstall, Web\js\,bootstrap-4.6.0 Web\js\,bootstrap-4.6.0 1
+FileInstall, Web\css\bootstrap-4.6.0.css, Web\css\bootstrap-4.6.0.css, 1
+FileInstall, Web\js\jquery-3.6.0.js, Web\js\jquery-3.6.0.js, 1
 FileInstall, Web\js\popper.min.js, Web\js\popper.min.js, 1
 FileInstall, Web\js\shit.js, Web\js\shit.js, 1
 FileInstall, Web\main.html, Web\main.html, 1
