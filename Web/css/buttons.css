@@ -69,7 +69,6 @@
     background-color: #43d6b5;
     border-color: #43d6b5;
     transform: translateY(6px);
-/*    box-shadow: 0 0 0 0.0rem rgba(58, 176, 195, 0.5); */
 }
 
 .btn-outline-primary {
@@ -86,7 +85,6 @@
     box-shadow: none!important;
 }
 
-/*.btn-outline-primary:focus */
 .btn-outline-primary:focus, .btn-outline-primary:active {
     background-color: #F94D35;
     color: #ffffff;
