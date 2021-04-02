@@ -39,6 +39,7 @@
     background-color: #D04D6F;
     border-color: #D04D6F;
     transform: translateY(-2px);
+    box-shadow: none!important;
 }
 
 .btn-bypass
