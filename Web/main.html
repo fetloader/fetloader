@@ -21,48 +21,60 @@
   <link href="css/stylesheet.css" rel="stylesheet">
 
 
-<body>
-  <script>
-    var inifile = getText();
-  </script>
-  <header>
-    <div class="d-flex align-items-stretch bg-dark text-white">
-      <span class="flex-grow-1 px-2 py-1" oncontextmenu="ahk.ShowAbout()" onmousedown="neutron.DragTitleBar()">FET Loader</span>
-      <span class="title-btn title-btn-close mr-2 mt-1" style="cursor: pointer;" onmouseover="this.style.color = 'gray'" onmouseout="this.style.color = 'white'" onclick="neutron.Close()" oncontextmenu="ahk.UploadLog()">✖</span>
+  <body>
+    <script>
+      var inifile = getText();
+    </script>
+
+    <header>
+      <div class="d-flex align-items-stretch bg-dark text-white">
+        <span class="flex-grow-1 px-2 py-1" oncontextmenu="ahk.ShowAbout()" onmousedown="neutron.DragTitleBar()">FET Loader</span>
+        <span class="title-btn title-btn-close mr-2 mt-1" style="cursor: pointer;" onmouseover="this.style.color = 'gray'" onmouseout="this.style.color = 'white'" onclick="neutron.Close()" oncontextmenu="ahk.UploadLog()">✖</span>
+      </div>
+    </header>
+
+    <div id="inject">
+      <button type="button" class="btn btn-inject" value="inject" id="inject_button"
+        onClick="ahk.Inject(GetSelectedCheat()); this.disabled = true;" disabled=true>Inject</button>
     </div>
-  </header>
 
-  <div id="inject">
-    <button type="button" class="btn btn-inject" value="inject" id="inject_button"
-      onClick="ahk.Inject(GetSelectedCheat())" disabled=true>Inject</button>
-  </div>
+    <div id="bypass">
+      <button type="button" class="btn btn-bypass" value="bypass" id="bypass_button" onclick="BypassButtonClicked()">Enable bypass</button>
+    </div>
 
-  <div id="bypass">
-    <button type="button" class="btn btn-bypass" value="bypass" id="bypass_button" onclick="BypassButtonClicked()">Enable bypass</button>
-  </div>
-
-
-  <div id="cheatslist">
-    <div class="btn-group-vertical btn-group-toggle ml-3 mt-3" data-toggle="buttons" id="cheats"> 
-      <script>
-        function createCheatsButtons() {
-          var cheats = parseINIString(getText())["cheatlist"]["cheatlist"].split("|");
-          console.log(cheats);
-          var cheats_div = document.getElementById("cheats");
-          for (cheat in cheats) {
-            cheats_div.innerHTML += "<label class=\"btn btn-outline-primary\"><input type=\"radio\" name=\"cheat\" value=\"" + cheats[cheat] + "\" autocomplete=\"off\" onclick='CheatButtonClicked();'> " + cheats[cheat] + " </label>";
+    <div id="cheatslist">
+      <div class="btn-group-vertical btn-group-toggle ml-3 mt-3" data-toggle="buttons" id="cheats"> 
+        <script>
+          function createCheatsButtons() {
+            var cheats = parseINIString(getText())["cheatlist"]["cheatlist"].split("|");
+            console.log(cheats);
+            var cheats_div = document.getElementById("cheats");
+            for (cheat in cheats) {
+              cheats_div.innerHTML += "<label class=\"btn btn-outline-primary\"><input type=\"radio\" name=\"cheat\" value=\"" + cheats[cheat] + "\" autocomplete=\"off\" onclick='CheatButtonClicked();'> " + cheats[cheat] + " </label>";
+            }
           }
-        }
-        createCheatsButtons();
-      </script>
-      <div id="cheatstatus">
-        <span class="detect-status" id="shit"></span>
-      </div>
-      <div id="cheatinfo">
-        <span class="cheat-info" id="shit228"></span>
+          createCheatsButtons();
+        </script>
+        <div id="cheatstatus">
+          <span class="detect-status" id="shit"></span>
+        </div>
+        <div id="cheatinfo">
+          <span class="cheat-info" id="shit228"></span>
+        </div>
       </div>
     </div>
-  </div>
+  </body>
+  <script>
+    // Чтобы кнопка инжекта не висела красным
+    $(".btn").mouseup(function(){
+      $(this).blur();
+  })
+  </script>
 
-</body>
+  <script>
+    // Remove cheat selection on inject
+    $('#inject_button').on("click", function () {
+      $('input:radio[name="cheat"]').parent().removeClass("active");
+    });
+  </script>
 </html>
