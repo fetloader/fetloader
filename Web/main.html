@@ -10,11 +10,6 @@
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap-4.6.0.js"></script>
   <script src="js/shit.js"></script>
-  <script>
-    $(document).bind("contextmenu", function (e) { // Disable right mouse button menu
-      return false;
-    });
-  </script>
   <link href="css/bootstrap-4.6.0.css" rel="stylesheet">
   <link href="css/buttons.css" rel="stylesheet">
   <link href="css/shit.css" rel="stylesheet">
@@ -64,6 +59,7 @@
       </div>
     </div>
   </body>
+
   <script>
     // Чтобы кнопка инжекта не висела красным
     $(".btn").mouseup(function(){
@@ -75,6 +71,14 @@
     // Remove cheat selection on inject
     $('#inject_button').on("click", function () {
       $('input:radio[name="cheat"]').parent().removeClass("active");
+      document.getElementById("shit").textContent = "";
+      document.getElementById("shit228").textContent = "";
+    });
+  </script>
+
+  <script>
+    $(document).bind("contextmenu", function (e) { // Disable right mouse button menu
+      return false;
     });
   </script>
 </html>
