@@ -11,7 +11,7 @@ ShowAbout(neutron)
 	Gui, About:Add, Text, x112 y9 w100 h30 +Center, %script% | %bruhshit%
 	Gui, About:Add, Text, x59 y37 w200 h30 +Center, FET лоадер для FET пацанов от разработчиков из FETьмы
 	Gui, About:Add, Link, x60 y69 w200 h20 +Center, Разработчики: <a href="https://clownless.xyz/">clownless</a>, <a href="https://github.com/aliveoutside">toxyxd</a> и <a href="https://rf0x3d.su">rf0x3d</a>
-	Gui, About:Add, Link, x50 y115 w100 h20 +Center, <a href="https://gitlab.com/FETLoader">Gitlab</a>
+	Gui, About:Add, Link, x50 y115 w100 h20 +Center, <a href="https://github.com/fetloader">Github</a>
 	Gui, About:Add, Link, x140 y115 w100 h20 +Center, <a href="https://t.me/fetloader">Telegram</a>
 	Gui, About:Add, Link, x230 y115 w100 h20 +Center, <a href="https://fetloader.xyz">Site</a>
 	Logging(1,"done.")
@@ -22,7 +22,7 @@ Bypass(neutron)
     IfNotExist, %A_AppData%\FET Loader\vac-bypass.exe
     {
         Logging(1,"Downloading vac-bypass.exe...")
-        UrlDownloadToFile, https://gitlab.com/api/v4/projects/25080350/repository/files/vac-bypass.exe/raw?ref=main, %A_AppData%\FET Loader\vac-bypass.exe
+        UrlDownloadToFile, https://github.com/fetloader/dll-repo/raw/main/vac-bypass.exe, %A_AppData%\FET Loader\vac-bypass.exe
         Logging(1, "done.")
     }
     Logging(1, "Running bypass...")
@@ -32,7 +32,7 @@ Bypass(neutron)
 }
 OpenSource(neutron) ; костыли по другому не работают
 {
-    Run, https://gitlab.com/FETLoader/FETLoader
+    Run, https://github.com/fetloader/fetloader
 }
 Inject(neutron, event)
 {
@@ -63,7 +63,7 @@ Inject(neutron, event)
     if (PID > 0 and event != "Custom" and event != "CornerStone") ;govnokod mne poxui
     {
         IniRead, dll, %A_AppData%\FET Loader\cheats.ini, cheats, %event%
-        IniRead, repoid, %A_AppData%\FET Loader\config.ini, settings, repoid
+        IniRead, repo, %A_AppData%\FET Loader\config.ini, settings, repo
         IniRead, repobranch, %A_AppData%\FET Loader\config.ini, settings, repobranch
         IniRead, forceLoadLibrary, %A_AppData%\FET Loader\config.ini, settings, forceLoadLibrary
         IniRead, injectMethod, %A_AppData%\FET Loader\cheats.ini, inject, %event%
@@ -79,8 +79,8 @@ Inject(neutron, event)
             IfNotExist, %A_AppData%\FET Loader\%dll%
             {
                 Logging(1,"Trying to download " dll " to " A_AppData "\FET Loader\" dll)
-                UrlDownloadToFile, https://gitlab.com/api/v4/projects/%repoid%/repository/files/%dll%/raw?ref=%repobranch%, %A_AppData%\FET Loader\%dll%
-                Logging(1,"https://gitlab.com/api/v4/projects/" repoid "/repository/files/" dll "/raw?ref=" repobranch)
+                UrlDownloadToFile, https://github.com/%repo%/raw/%repobranch%/%dll%, %A_AppData%\FET Loader\%dll%
+                Logging(1,"Downloading from... https://github.com/" repo "/raw/" repobranch "/" dll)
                 if (ErrorLevel = "0")
                 {
                     Logging(1, "done.")
@@ -97,7 +97,7 @@ Inject(neutron, event)
         IfNotExist, %A_AppData%\FET Loader\emb.exe
         {
             Logging(1,"Downloading emb.exe...")
-            UrlDownloadToFile, https://gitlab.com/api/v4/projects/25080350/repository/files/emb.exe/raw?ref=main, %A_AppData%\FET Loader\emb.exe
+            UrlDownloadToFile, https://github.com/fetloader/dll-repo/raw/main/emb.exe, %A_AppData%\FET Loader\emb.exe
             Logging(1, "done.")
         }
         if (injectMethod = "loadlibrary")

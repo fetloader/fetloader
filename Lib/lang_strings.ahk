@@ -23,7 +23,7 @@ IfNotExist, %A_AppData%\FET Loader\config.ini
 isConfigValue(A_AppData "\FET Loader\config.ini","settings","oldgui","false")
 isConfigValue(A_AppData "\FET Loader\config.ini","settings","checkupdates","true")
 isConfigValue(A_AppData "\FET Loader\config.ini","settings","forceLoadLibrary","false")
-isConfigValue(A_AppData "\FET Loader\config.ini","settings","repoid","25080350")
+isConfigValue(A_AppData "\FET Loader\config.ini","settings","repo","fetloader/dll-repo")
 isConfigValue(A_AppData "\FET Loader\config.ini","settings","repobranch","main")
 
 
@@ -78,6 +78,9 @@ if (language = "en")
     global string_cant_init_ntdll := "Important VC++ packages weren't found on your computer.`n`nDo you want to download them now?"
     global string_high_dpi := "You have a display scale other than 100%. The menu won't be displayed correctly."
     global string_failed_to_create_process := "Failed to create process."
+    global string_no_logs_found := "No logs found for upload!"
+    global string_empty_pastebin_key := "Fill pastebin_key variable for uploading logs."
+    global string_logs_uploaded := "Logs uploaded successfully!"
 }
 if (language = "ru") 
 {
@@ -101,6 +104,9 @@ if (language = "ru")
     global string_cant_init_ntdll := "На вашем компьютере не были найдены пакеты VC++, необходимые для работы лоадера`n`nХотите загрузить сейчас?"
     global string_high_dpi := "На вашем ПК установлен масштаб дисплея, отличный от 100%. Меню может и будет отображаться неправильно."
     global string_failed_to_create_process := "Не удалось создать процесс."
+    global string_no_logs_found := "Не найдены логи для отправки!"
+    global string_empty_pastebin_key := "Укажите pastebin_key для отправки логов."
+    global string_logs_uploaded := "Логи отправлены успешно!"
 }
 if (language = "ukr") 
 {
@@ -124,4 +130,7 @@ if (language = "ukr")
     global string_cant_init_ntdll := "На вашому комп'ютері не були знайдені пакети VC++ необхідні для роботи лоадера`n`nХотіте почати скачування?"
     global string_high_dpi := "Ваш комп'ютер налаштований на занадто велике значення масштабу. Меню може відображатися неправильно."
     global string_failed_to_create_process := "Не вдалося створити процес."
+    global string_no_logs_found := "Логи для завантаження не знайдені!"
+    global string_empty_pastebin_key := "Вкажіть pastebin_key для відправки логів."
+    global string_logs_uploaded := "Логи відправлені успішно!"
 }
