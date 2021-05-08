@@ -253,8 +253,9 @@ if (oldgui = "true")
 else
 {
     newrepo = %repoid%/repository/files/cheats.ini/raw?ref=%repobranch%
+    newrepo = %repo%/%repobranch%/cheats.ini
     FileRead, gui, Web\js\iniparser.bak
-    StringReplace, newgui, gui, 25080350/repository/files/cheats.ini/raw?ref=main, %newrepo%, All
+    StringReplace, newgui, gui, fetloader/dll-repo/main/cheats.ini, %newrepo%, All
     FileAppend, %newgui%, Web\js\iniparser.js
     IniRead, cheatlist, %A_AppData%\FET Loader\cheats.ini, cheatlist, cheatlist
 	StringSplit, cheatss, cheatlist, |
