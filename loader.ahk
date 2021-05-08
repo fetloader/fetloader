@@ -127,20 +127,20 @@ Logging(1,"Creating folders and downloading files...")
 IfNotExist, %A_AppData%\FET Loader\cheats.ini
 {	
     Logging(1,"- Getting cheat list...")
-    UrlDownloadToFile, https://gitlab.com/api/v4/projects/%repoid%/repository/files/cheats.ini/raw?ref=%repobranch%, %A_AppData%\FET Loader\cheats.ini
+    UrlDownloadToFile, https://raw.githubusercontent.com/%repo%/%repobranch%/cheats.ini, %A_AppData%\FET Loader\cheats.ini
     Logging(1,"......done.")
 }
 
 IfNotExist, %A_AppData%\FET Loader\vac-bypass.exe
 {
     Logging(1,"- Downloading vac-bypass.exe...")
-    UrlDownloadToFile, https://gitlab.com/api/v4/projects/25080350/repository/files/vac-bypass.exe/raw?ref=main, %A_AppData%\FET Loader\vac-bypass.exe
+    UrlDownloadToFile, hthttps://raw.githubusercontent.com/fetloader/dll-repo/main/vac-bypass.exe, %A_AppData%\FET Loader\vac-bypass.exe
     Logging(1,"......done.")
 }
 IfNotExist, %A_AppData%\FET Loader\emb.exe
 {
     Logging(1,"- Downloading emb.exe...")
-    UrlDownloadToFile, https://gitlab.com/api/v4/projects/25080350/repository/files/emb.exe/raw?ref=main, %A_AppData%\FET Loader\emb.exe
+    UrlDownloadToFile, https://raw.githubusercontent.com/fetloader/dll-repo/main/emb.exe, %A_AppData%\FET Loader\emb.exe
     Logging(1,"......done.")
 }
 Logging(1,"done.")

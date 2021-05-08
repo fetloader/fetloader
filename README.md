@@ -16,7 +16,7 @@
 
 ## How to compile
 - Install AHK ANSI 32-bit
-- Clone the repository with the command `git clone https://gitlab.com/FETLoader/FETLoader | cd FETLoader | git submodule update --init --recursive`
+- Clone the repository with the command `git clone https://github.com/fetloader/fetloader | cd fetloader | git submodule update --init --recursive`
 - Run `COMPILE.exe`
 
 ## Contributing
