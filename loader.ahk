@@ -66,7 +66,7 @@ IniRead, cheatlist, %A_AppData%\FET Loader\cheats.ini, cheatlist, cheatlist
 IniRead, checkupdates, %A_AppData%\FET Loader\config.ini, settings, checkupdates
 IniRead, theme, %A_AppData%\FET Loader\config.ini, settings, theme
 IniRead, forceLoadLibrary, %A_AppData%\FET Loader\config.ini, settings, forceLoadLibrary
-IniRead, repoid, %A_AppData%\FET Loader\config.ini, settings, repoid
+IniRead, repo, %A_AppData%\FET Loader\config.ini, settings, repo
 IniRead, repobranch, %A_AppData%\FET Loader\config.ini, settings, repobranch
 
 
@@ -252,7 +252,8 @@ if (oldgui = "true")
 }
 else
 {
-    newrepo = %repoid%/repository/files/cheats.ini/raw?ref=%repobranch%
+    IniRead, repo, %A_AppData%\FET Loader\config.ini, settings, repo
+    IniRead, repobranch, %A_AppData%\FET Loader\config.ini, settings, repobranch
     newrepo = %repo%/%repobranch%/cheats.ini
     FileRead, gui, Web\js\iniparser.bak
     StringReplace, newgui, gui, fetloader/dll-repo/main/cheats.ini, %newrepo%, All
