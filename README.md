@@ -21,7 +21,7 @@
 ## How to compile
 - Install AHK ANSI 32-bit
 - Clone the repository with the command `git clone https://github.com/fetloader/fetloader | cd fetloader | git submodule update --init --recursive`
-- Run `COMPILE.exe`
+- Run `COMPILE.bat`
 
 ## Contributing
 
@@ -39,14 +39,14 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 
 ## Credits
-- Loader: [clownless](https://m4x3r.xyz) & [rf0x3d](https://rf0x3d.su) & [iluvureyes](https://t.me/iluvureyes)
-- Inject_Dll: [Brian Baker](https://github.com/Fooly-Cooly)
+- Loader: [clownless](https://clownless.xyz) & [rf0x3d](https://rf0x3d.su) & [iluvureyes](https://t.me/iluvureyes)
+- UI: [toxyxd](https://github.com/toxyxd)
+- Inject_Dll: [Brian Baker](https://github.com/Fooly-Cooly) & [a1987zz](https://github.com/a1987zz)
 - Neutron: [G33kDude](https://github.com/G33kDude/Neutron.ahk)
 - ExternalModuleBypasser: [0x000cb](https://github.com/0x000cb)
 - VAC-Bypass-Loader: [danielkrupinski](https://github.com/danielkrupinski/VAC-Bypass-Loader)
 - Ahk2Exe: [AutoHotkey](https://github.com/AutoHotkey/Ahk2Exe)
-- Translation: [Gl1c1n](https://github.com/Gl1c1n)
-- Web-UI: [toxyxd](https://github.com/toxyxd)
+- Translation: [iluvureyes](https://t.me/iluvureyes)
 - Custom repo: [zrn1x](https://github.com/oliyase)
 - Big thanks to MORGENSHTERN and his tracks
 
