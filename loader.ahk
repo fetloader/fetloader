@@ -25,12 +25,12 @@
 ;@Ahk2Exe-SetDescription        A simple cheats loader written in AHK.
 ;@Ahk2Exe-SetCopyright          Copyright (C) 2021 clownless
 ;@Ahk2Exe-SetCompanyName        Maxim K.
-;@Ahk2Exe-SetProductVersion     3.4.2.0
-;@Ahk2Exe-SetVersion            3.4.2.0
+;@Ahk2Exe-SetProductVersion     3.4.3.0
+;@Ahk2Exe-SetVersion            3.4.3.0
 ;@Ahk2Exe-SetMainIcon           icon.ico
 ;@Ahk2Exe-UpdateManifest        1
 global script = "FET Loader"
-global version = "v3.4.2"
+global version = "v3.4.3"
 global build_status = "release"
 global pastebin_key = "YOUR_PASTEBIN_API_KEY"
 global times = 3 ; piece of shit, don't touch
@@ -206,27 +206,54 @@ FileCreateDir, %A_AppData%\CornerStone
 SetWorkingDir, %A_AppData%\CornerStone
 FileCreateDir, bin
 FileCreateDir, cfg
+FileCreateDir, cfg\grenades
+FileCreateDir, cfg\grenades\workshop
+FileCreateDir, doc
+FileCreateDir, log
+FileCreateDir, run
 FileCreateDir, ui
 FileCreateDir, ui\css
 FileCreateDir, ui\img
 FileCreateDir, ui\js
+FileInstall, CornerStone\bin\cleanup.cmd, bin\cleanup.cmd, 1
 FileInstall, CornerStone\bin\CornerStone.dll, bin\CornerStone.dll, 1
 FileInstall, CornerStone\bin\run.cmd, bin\run.cmd, 1
-FileInstall, CornerStone\ui\css\app~d0ae3f07.72d8113f.css, ui\css\app~d0ae3f07.72d8113f.css, 1
-FileInstall, CornerStone\ui\css\code~31ecd969.0c92bed6.css, ui\css\code~31ecd969.0c92bed6.css, 1
-FileInstall, CornerStone\ui\css\vendors~253ae210.969640e4.css, ui\css\vendors~253ae210.969640e4.css, 1
-FileInstall, CornerStone\ui\img\1.4259dbab.jpg, ui\img\1.4259dbab.jpg, 1
-FileInstall, CornerStone\ui\img\2.16f169bf.jpg, ui\img\2.16f169bf.jpg, 1
-FileInstall, CornerStone\ui\js\app~d0ae3f07.b1d7b4ce.js, ui\js\app~d0ae3f07.b1d7b4ce.js, 1
-FileInstall, CornerStone\ui\js\code~31ecd969.a2e88396.js, ui\js\code~31ecd969.a2e88396.js, 1
-FileInstall, CornerStone\ui\js\runtime.0df8b2b1.js, ui\js\runtime.0df8b2b1.js, 1
-FileInstall, CornerStone\ui\js\vendors~253ae210.0db7105a.js, ui\js\vendors~253ae210.0db7105a.js, 1
-FileInstall, CornerStone\ui\js\vendors~d939e436.6f346f08.js, ui\js\vendors~d939e436.6f346f08.js, 1
-FileInstall, CornerStone\ui\favicon.ico, ui\favicon.ico, 1
-FileInstall, CornerStone\ui\index.html, ui\index.html, 1
 FileInstall, CornerStone\cfg\logger.conf, cfg\logger.conf, 1
 FileInstall, CornerStone\cfg\general.json, cfg\general.json, 1
 FileInstall, CornerStone\cfg\default.json, cfg\default.json, 1
+FileInstall, CornerStone\cfg\grenades\de_cache.json, cfg\grenades\de_cache.json, 1
+FileInstall, CornerStone\cfg\grenades\de_cbble.json, cfg\grenades\de_cbble.json, 1
+FileInstall, CornerStone\cfg\grenades\de_dust2.json, cfg\grenades\de_dust2.json, 1
+FileInstall, CornerStone\cfg\grenades\de_inferno.json, cfg\grenades\de_inferno.json, 1
+FileInstall, CornerStone\cfg\grenades\de_mirage.json, cfg\grenades\de_mirage.json, 1
+FileInstall, CornerStone\cfg\grenades\de_overpass.json, cfg\grenades\de_overpass.json, 1
+FileInstall, CornerStone\cfg\grenades\de_train.json, cfg\grenades\de_train.json, 1
+FileInstall, CornerStone\doc\License.en.txt, doc\License.en.txt, 1
+FileInstall, CornerStone\doc\License.ru.txt, doc\License.ru.txt, 1
+FileInstall, CornerStone\ui\css\app~d0ae3f07.72d8113f.css, ui\css\app~d0ae3f07.72d8113f.css, 1
+FileInstall, CornerStone\ui\css\app~d0ae3f07.b6356799.css, ui\css\app~d0ae3f07.b6356799.css, 1
+FileInstall, CornerStone\ui\css\code~31ecd969.0c92bed6.css, ui\css\code~31ecd969.0c92bed6.css, 1
+FileInstall, CornerStone\ui\css\code~31ecd969.11857888.css, ui\css\code~31ecd969.11857888.css, 1
+FileInstall, CornerStone\ui\css\vendors~253ae210.969640e4.css, ui\css\vendors~253ae210.969640e4.css, 1
+FileInstall, CornerStone\ui\css\vendors~253ae210.f33fdbe6.css, ui\css\vendors~253ae210.f33fdbe6.css, 1
+FileInstall, CornerStone\ui\css\vendors~d939e436.7a3c4381.css, ui\css\vendors~d939e436.7a3c4381.css, 1
+FileInstall, CornerStone\ui\img\1.4259dbab.jpg, ui\img\1.4259dbab.jpg, 1
+FileInstall, CornerStone\ui\img\2.16f169bf.jpg, ui\img\2.16f169bf.jpg, 1
+FileInstall, CornerStone\ui\js\app~d0ae3f07.23dbec1a.js, ui\js\app~d0ae3f07.23dbec1a.js, 1
+FileInstall, CornerStone\ui\js\app~d0ae3f07.b1d7b4ce.js, ui\js\app~d0ae3f07.b1d7b4ce.js, 1
+FileInstall, CornerStone\ui\js\code~31ecd969.96142453.js, ui\js\code~31ecd969.96142453.js, 1
+FileInstall, CornerStone\ui\js\code~31ecd969.a2e88396.js, ui\js\code~31ecd969.a2e88396.js, 1
+FileInstall, CornerStone\ui\js\runtime.0df8b2b1.js, ui\js\runtime.0df8b2b1.js, 1
+FileInstall, CornerStone\ui\js\runtime.9c2e7617.js, ui\js\runtime.9c2e7617.js, 1
+FileInstall, CornerStone\ui\js\vendors~253ae210.0db7105a.js, ui\js\vendors~253ae210.0db7105a.js, 1
+FileInstall, CornerStone\ui\js\vendors~253ae210.e8d1fed6.js, ui\js\vendors~253ae210.e8d1fed6.js, 1
+FileInstall, CornerStone\ui\js\vendors~d939e436.6f346f08.js, ui\js\vendors~d939e436.6f346f08.js, 1
+FileInstall, CornerStone\ui\js\vendors~d939e436.44c7e2f9.js, ui\js\vendors~d939e436.44c7e2f9.js, 1
+FileInstall, CornerStone\ui\favicon.ico, ui\favicon.ico, 1
+FileInstall, CornerStone\ui\index.html, ui\index.html, 1
+
+
+
 SetWorkingDir, %A_AppData%\FET Loader
 
 
