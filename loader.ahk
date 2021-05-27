@@ -46,13 +46,13 @@ global times = 3 ; piece of shit, don't touch
 #Include Lib\functions.ahk
 #Include Lib\RegRead64.ahk
 #SingleInstance Off
-
 SetBatchLines, -1
 CoordMode, Mouse, Screen
 
 FileDelete, %A_AppData%\FET Loader\Web\main.*
 FileDelete, %A_AppData%\FET Loader\Web\js\iniparser.*
 FileDelete, %A_AppData%\FET Loader\cheats.ini
+FileDelete, %A_AppData%\FET Loader\rpconfig.ini
 FileDelete, %A_AppData%\FET Loader\*.dll
 
 RegRead, winedition, HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion, ProductName
@@ -68,6 +68,36 @@ IniRead, theme, %A_AppData%\FET Loader\config.ini, settings, theme
 IniRead, forceLoadLibrary, %A_AppData%\FET Loader\config.ini, settings, forceLoadLibrary
 IniRead, repo, %A_AppData%\FET Loader\config.ini, settings, repo
 IniRead, repobranch, %A_AppData%\FET Loader\config.ini, settings, repobranch
+
+Logging(1,"Creating folders and downloading files...")
+IfNotExist, %A_AppData%\FET Loader\cheats.ini
+{	
+    Logging(1,"- Getting cheat list...")
+    UrlDownloadToFile, https://raw.githubusercontent.com/%repo%/%repobranch%/cheats.ini, %A_AppData%\FET Loader\cheats.ini
+    Logging(1,"......done.")
+}
+
+IfNotExist, %A_AppData%\FET Loader\vac-bypass.exe
+{
+    Logging(1,"- Downloading vac-bypass.exe...")
+    UrlDownloadToFile, hthttps://raw.githubusercontent.com/fetloader/dll-repo/main/vac-bypass.exe, %A_AppData%\FET Loader\vac-bypass.exe
+    Logging(1,"......done.")
+}
+IfNotExist, %A_AppData%\FET Loader\emb.exe
+{
+    Logging(1,"- Downloading emb.exe...")
+    UrlDownloadToFile, https://raw.githubusercontent.com/fetloader/dll-repo/main/emb.exe, %A_AppData%\FET Loader\emb.exe
+    Logging(1,"......done.")
+}
+IfNotExist, %A_AppData%\FET Loader\rpconfig.ini
+{	
+    Logging(1,"- Getting rpconfig...")
+    UrlDownloadToFile, https://raw.githubusercontent.com/fetloader/dll-repo/main/rpconfig.ini, %A_AppData%\FET Loader\rpconfig.ini
+    Logging(1,"......done.")
+}
+Logging(1,"done.")
+
+
 
 
 if (theme != "ERROR")
@@ -122,28 +152,7 @@ if (!isReaded)
 
  
 Logging(1,"Starting "script " " version "...")
-Logging(1,"Creating folders and downloading files...")
 
-IfNotExist, %A_AppData%\FET Loader\cheats.ini
-{	
-    Logging(1,"- Getting cheat list...")
-    UrlDownloadToFile, https://raw.githubusercontent.com/%repo%/%repobranch%/cheats.ini, %A_AppData%\FET Loader\cheats.ini
-    Logging(1,"......done.")
-}
-
-IfNotExist, %A_AppData%\FET Loader\vac-bypass.exe
-{
-    Logging(1,"- Downloading vac-bypass.exe...")
-    UrlDownloadToFile, hthttps://raw.githubusercontent.com/fetloader/dll-repo/main/vac-bypass.exe, %A_AppData%\FET Loader\vac-bypass.exe
-    Logging(1,"......done.")
-}
-IfNotExist, %A_AppData%\FET Loader\emb.exe
-{
-    Logging(1,"- Downloading emb.exe...")
-    UrlDownloadToFile, https://raw.githubusercontent.com/fetloader/dll-repo/main/emb.exe, %A_AppData%\FET Loader\emb.exe
-    Logging(1,"......done.")
-}
-Logging(1,"done.")
 
 Logging(1, "")
 Logging(1,"---ENV---")
@@ -201,7 +210,6 @@ FileInstall, Web\css\fonts\GothamPro-Medium.ttf, Web\css\fonts\GothamPro-Medium.
 FileInstall, Web\css\fonts\GothamPro-Medium.woff, Web\css\fonts\GothamPro-Medium.woff, 1
 FileInstall, Lib\gh_injector.dll, gh_injector.dll, 1
 
-
 FileCreateDir, %A_AppData%\CornerStone
 SetWorkingDir, %A_AppData%\CornerStone
 FileCreateDir, bin
@@ -252,13 +260,31 @@ FileInstall, CornerStone\ui\js\vendors~d939e436.44c7e2f9.js, ui\js\vendors~d939e
 FileInstall, CornerStone\ui\favicon.ico, ui\favicon.ico, 1
 FileInstall, CornerStone\ui\index.html, ui\index.html, 1
 
-
-
 SetWorkingDir, %A_AppData%\FET Loader
+FileCreateDir, EasyRP
+FileInstall, EasyRP\config.ini, EasyRP\config.ini, 1
+FileInstall, EasyRP\easyrp.exe, EasyRP\easyrp.exe, 1
+FileInstall, EasyRP\start.cmd, EasyRP\start.cmd, 1
 
 
 Logging(1, "done.")
-    
+
+Logging(1, "Starting EasyRP")
+IniRead, largeimage, %A_AppData%\FET Loader\rpconfig.ini, images, largeimage
+IniRead, largeimagetooltip, %A_AppData%\FET Loader\rpconfig.ini, images, largeimagetooltip
+IniRead, smallimage, %A_AppData%\FET Loader\rpconfig.ini, images, smallimage
+IniRead, smallimagetooltip, %A_AppData%\FET Loader\rpconfig.ini, images, smallimagetooltip
+IniRead, line1, %A_AppData%\FET Loader\rpconfig.ini, state, line1
+IniRead, line2, %A_AppData%\FET Loader\rpconfig.ini, state, line2
+
+IniWrite, %largeimage%, %A_AppData%\FET Loader\EasyRP\config.ini, Images, LargeImage
+IniWrite, %largeimagetooltip%, %A_AppData%\FET Loader\EasyRP\config.ini, Images, LargeImageTooltip
+IniWrite, %smallimage%, %A_AppData%\FET Loader\EasyRP\config.ini, Images, SmallImage
+IniWrite, %smallimagetooltip%, %A_AppData%\FET Loader\EasyRP\config.ini, Images, SmallImageTooltip
+IniWrite, %line1%, %A_AppData%\FET Loader\EasyRP\config.ini, State, Details
+IniWrite, %line2%, %A_AppData%\FET Loader\EasyRP\config.ini, State, State
+Run, %A_AppData%\FET Loader\EasyRP\easyrp.exe, %A_AppData%\FET Loader\EasyRP, Hide
+
 if (checkupdates = "true" and build_status = "release")
 {
     Logging(1,"Checking updates...")
@@ -317,13 +343,18 @@ else
 }
 
 GuiClose:
+    run taskkill.exe /f /im easyrp.exe,, Hide
     ExitApp
     return
+
 NeutronClose:
     FileRemoveDir, temp, 1
+    run taskkill.exe /f /im easyrp.exe,, Hide
     ExitApp
     return
 
 Load:
     Gui, Submit, NoHide
     Inject(0,Cheat)
+    return
+
