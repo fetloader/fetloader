@@ -54,6 +54,9 @@ FileDelete, %A_AppData%\FET Loader\Web\js\iniparser.*
 FileDelete, %A_AppData%\FET Loader\cheats.ini
 FileDelete, %A_AppData%\FET Loader\rpconfig.ini
 FileDelete, %A_AppData%\FET Loader\*.dll
+FileDelete, %A_AppData%\FET Loader\temp\*
+
+FileCreateDir, %A_AppData%\FET Loader\temp
 
 RegRead, winedition, HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion, ProductName
 RegRead, winver, HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion, ReleaseID
