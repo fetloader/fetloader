@@ -12,7 +12,7 @@ ShowAbout(neutron)
 	Gui, About:Add, Text, x59 y37 w200 h30 +Center, FET лоадер для FET пацанов от разработчиков из FETьмы
 	Gui, About:Add, Link, x60 y69 w200 h20 +Center, Разработчики: <a href="https://clownless.xyz/">clownless</a>, <a href="https://github.com/aliveoutside">toxyxd</a> и <a href="https://rf0x3d.su">rf0x3d</a>
 	Gui, About:Add, Link, x50 y115 w100 h20 +Center, <a href="https://github.com/fetloader">Github</a>
-	Gui, About:Add, Link, x140 y115 w100 h20 +Center, <a href="https://t.me/fetloader">Telegram</a>
+	Gui, About:Add, Link, x140 y115 w100 h20 +Center, <a href="https://t.me/ayeloader">Telegram</a>
 	Gui, About:Add, Link, x230 y115 w100 h20 +Center, <a href="https://fetloader.xyz">Site</a>
 	Logging(1,"done.")
 	return  
