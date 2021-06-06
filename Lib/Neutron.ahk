@@ -573,7 +573,12 @@ class NeutronWindow
 		
 		Gui, % this.hWnd ":Show", %options% w%w% h%h%
 	}
-	
+
+	; Change a Neutron window title
+	SetTitle(title)
+	{
+		Gui, % this.hWnd ":Show",, %title%
+	}
 	; Loads an HTML file by name (not path). When running the script uncompiled,
 	; looks for the file in the local directory. When running the script
 	; compiled, looks for the file in the EXE's RCDATA. Files included in your
