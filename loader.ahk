@@ -341,8 +341,7 @@ else
         guiheight := 330
     }
     neutron.Gui("-Resize")
-    neutron.Show("w400 h" guiheight)
-    neutron.SetTitle(script)
+    neutron.Show("w400 h" guiheight, script)
     return
 }
 
