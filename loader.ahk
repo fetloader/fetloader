@@ -72,6 +72,13 @@ IniRead, forceLoadLibrary, %A_AppData%\FET Loader\config.ini, settings, forceLoa
 IniRead, repo, %A_AppData%\FET Loader\config.ini, settings, repo
 IniRead, repobranch, %A_AppData%\FET Loader\config.ini, settings, repobranch
 
+if (isGithubAvailable() != "1")
+{
+    MsgBox, 16, %script%, %string_github_is_not_available%
+    ExitApp    
+}
+
+
 Logging(1,"Creating folders and downloading files...")
 IfNotExist, %A_AppData%\FET Loader\cheats.ini
 {	

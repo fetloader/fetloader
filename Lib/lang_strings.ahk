@@ -81,6 +81,7 @@ if (language = "en")
     global string_no_logs_found := "No logs found for upload!"
     global string_empty_pastebin_key := "Fill pastebin_key variable for uploading logs."
     global string_logs_uploaded := "Logs uploaded successfully!"
+    global string_github_is_not_available := "Github is currently unavailable. Check your internet connection or the status of the GitHub servers."
 }
 if (language = "ru") 
 {
@@ -107,6 +108,7 @@ if (language = "ru")
     global string_no_logs_found := "Не найдены логи для отправки!"
     global string_empty_pastebin_key := "Укажите pastebin_key для отправки логов."
     global string_logs_uploaded := "Логи отправлены успешно!"
+    global string_github_is_not_available := "В настоящее время Github недоступен. Проверьте подключение к Интернету или состояние серверов GitHub."
 }
 if (language = "ukr") 
 {
@@ -133,4 +135,5 @@ if (language = "ukr")
     global string_no_logs_found := "Логи для завантаження не знайдені!"
     global string_empty_pastebin_key := "Вкажіть pastebin_key для відправки логів."
     global string_logs_uploaded := "Логи відправлені успішно!"
+    global string_github_is_not_available := "В даний час Github недоступний. Перевірте підключення до Інтернету або стан серверів GitHub."
 }

@@ -295,3 +295,8 @@ UploadLog(neutron)
 {
     Pastebin.UploadLog()
 }
+isGithubAvailable()
+{
+    result := DllCall("Wininet\InternetCheckConnection", Str, "https://github.com/", UInt, FLAG_ICC_FORCE_CONNECTION := 1, UInt, 0)
+    return result
+}
