@@ -42,7 +42,6 @@
         <script>
           function createCheatsButtons() {
             var cheats = parseINIString(getText())["cheatlist"]["cheatlist"].split("|");
-            console.log(cheats);
             var cheats_div = document.getElementById("cheats");
             for (cheat in cheats) {
               cheats_div.innerHTML += "<label class=\"btn btn-outline-primary\"><input type=\"radio\" name=\"cheat\" value=\"" + cheats[cheat] + "\" autocomplete=\"off\" onclick='CheatButtonClicked();'> " + cheats[cheat] + " </label>";
