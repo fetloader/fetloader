@@ -26,8 +26,8 @@
     background-color: transparent;
     outline-color: #abacae;
     border-color: #abacae !important;
-    box-shadow: none!important;
-    color: #abacae;
+    box-shadow: none !important;
+    color: #abacae !important;
     filter: brightness(66%);
     transform: none;
 }
