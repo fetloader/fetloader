@@ -34,7 +34,6 @@ function toggleTheme() {
 }
 function GetCheatStatus(cheat) {
     var status = parseINIString(inifile)["status"][cheat];
-    console.log(status);
     if (status == "Use at own risk")
     {
       document.getElementById("shit").textContent = "Use at own risk";
@@ -55,7 +54,6 @@ function GetCheatStatus(cheat) {
 function GetCheatAbout(zaebalo) 
 {
     var status = parseINIString(inifile)["info"][zaebalo];
-    console.log(status);
     document.getElementById("shit228").textContent = status;
     return
 }
