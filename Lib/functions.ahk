@@ -9,8 +9,7 @@ ShowAbout(neutron)
 	Gui, About:Font, s9
 	Gui, About:Show, w315 h155, %script% %version% | About
 	Gui, About:Add, Text, x112 y9 w100 h30 +Center, %script% | %bruhshit%
-	Gui, About:Add, Text, x59 y37 w200 h30 +Center, FET лоадер для FET пацанов от разработчиков из FETьмы
-	Gui, About:Add, Link, x60 y69 w200 h20 +Center, Разработчики: <a href="https://clownless.xyz/">clownless</a>, <a href="https://github.com/aliveoutside">toxyxd</a> и <a href="https://rf0x3d.su">rf0x3d</a>
+	Gui, About:Add, Text, x59 y37 w200 h30 +Center, %string_about_desc%
 	Gui, About:Add, Link, x50 y115 w100 h20 +Center, <a href="https://github.com/fetloader">Github</a>
 	Gui, About:Add, Link, x140 y115 w100 h20 +Center, <a href="https://t.me/ayeloader">Telegram</a>
 	Gui, About:Add, Link, x230 y115 w100 h20 +Center, <a href="https://fetloader.xyz">Site</a>
@@ -300,3 +299,24 @@ isGithubAvailable()
     result := DllCall("Wininet\InternetCheckConnection", Str, "https://github.com/", UInt, FLAG_ICC_FORCE_CONNECTION := 1, UInt, 0)
     return result
 }
+isConfigValue(file,section,key,value)
+{   
+    IniRead, output_key, %file%, %section%, %key%
+    if (output_key = "ERROR")
+    {   
+        Logging(2,"Not found " key " in config. Updating config file")
+        IniWrite, %value%, %file%, %section%, %key%
+    }
+}
+checkConfigValues()
+{
+    isConfigValue(A_AppData "\FET Loader\config.ini","settings","oldgui","false")
+    isConfigValue(A_AppData "\FET Loader\config.ini","settings","checkupdates","true")
+    isConfigValue(A_AppData "\FET Loader\config.ini","settings","forceLoadLibrary","false")
+    isConfigValue(A_AppData "\FET Loader\config.ini","settings","repo","fetloader/dll-repo")
+    isConfigValue(A_AppData "\FET Loader\config.ini","settings","repobranch","main")
+}
+
+
+
+

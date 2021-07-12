@@ -32,3 +32,15 @@ body {
     min-height: 100vh;
     font-family: 'Gotham Pro Medium';
 }
+
+.detect {
+    color: #ff5555 !important;
+  }
+
+.undetect {
+    color: #50fa7b !important;
+}
+
+.use-at-own-risk {
+    color: #ffb86c !important;
+}

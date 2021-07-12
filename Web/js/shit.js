@@ -37,17 +37,17 @@ function GetCheatStatus(cheat) {
     if (status == "Use at own risk")
     {
       document.getElementById("shit").textContent = "Use at own risk";
-      document.getElementById("cheatstatus").className = "text-warning";
+      document.getElementById("cheatstatus").className = "use-at-own-risk";
     }
     if (status == "DETECT")
     {
       document.getElementById("shit").textContent = "DETECT";
-      document.getElementById("cheatstatus").className = "text-danger";
+      document.getElementById("cheatstatus").className = "detect";
     }
     if (status == "UNDETECT")
     {
       document.getElementById("shit").textContent = "UNDETECT";
-      document.getElementById("cheatstatus").className = "text-success";
+      document.getElementById("cheatstatus").className = "undetect";
     }
     return
 }

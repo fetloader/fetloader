@@ -33,21 +33,25 @@ global script = "FET Loader"
 global version = "v3.5"
 global build_status = "release"
 global pastebin_key = "YOUR_PASTEBIN_API_KEY"
-global times = 3 ; piece of shit, don't touch
+global times = 3
 
-#NoEnv
-#NoTrayIcon
+#Include Lib\lang_strings.ahk
+#Include Lib\functions.ahk
 #Include Lib\LibCon.ahk
 #Include Lib\Neutron.ahk
 #Include Lib\Logging.ahk
-#Include Lib\lang_strings.ahk 
 #Include Lib\OTA.ahk
 #Include Lib\Pastebin.ahk
-#Include Lib\functions.ahk
 #Include Lib\RegRead64.ahk
+
 #SingleInstance Off
+#NoEnv
+#NoTrayIcon
+
 SetBatchLines, -1
 CoordMode, Mouse, Screen
+
+checkConfigValues()
 
 FileDelete, %A_AppData%\FET Loader\Web\main.*
 FileDelete, %A_AppData%\FET Loader\Web\js\iniparser.*
@@ -67,7 +71,6 @@ RegRead, isDPIWarningReaded, HKCU\SOFTWARE\CodISH Inc\FET Loader, isDPIWarningRe
 IniRead, oldgui, %A_AppData%\FET Loader\config.ini, settings, oldgui
 IniRead, cheatlist, %A_AppData%\FET Loader\cheats.ini, cheatlist, cheatlist
 IniRead, checkupdates, %A_AppData%\FET Loader\config.ini, settings, checkupdates
-IniRead, theme, %A_AppData%\FET Loader\config.ini, settings, theme
 IniRead, forceLoadLibrary, %A_AppData%\FET Loader\config.ini, settings, forceLoadLibrary
 IniRead, repo, %A_AppData%\FET Loader\config.ini, settings, repo
 IniRead, repobranch, %A_AppData%\FET Loader\config.ini, settings, repobranch
@@ -106,20 +109,6 @@ IfNotExist, %A_AppData%\FET Loader\rpconfig.ini
     Logging(1,"......done.")
 }
 Logging(1,"done.")
-
-
-
-
-if (theme != "ERROR")
-{
-    IniRead, color1, %A_AppData%\FET Loader\themes\%theme%\config.ini, theming, color_background
-    IniRead, color2, %A_AppData%\FET Loader\themes\%theme%\config.ini, theming, color_cheat_button
-    IniRead, color3, %A_AppData%\FET Loader\themes\%theme%\config.ini, theming, color_cheat_border
-    IniRead, color4, %A_AppData%\FET Loader\themes\%theme%\config.ini, theming, color_bypass_button
-    IniRead, color5, %A_AppData%\FET Loader\themes\%theme%\config.ini, theming, color_bypass_border
-    IniRead, color6, %A_AppData%\FET Loader\themes\%theme%\config.ini, theming, color_inject_button
-    IniRead, color7, %A_AppData%\FET Loader\themes\%theme%\config.ini, theming, color_inject_border
-}
 
 if (!cringe)
 {
@@ -326,20 +315,10 @@ else
 	cheatsCount := cheatss0 
     neutron := new NeutronWindow()
     neutron.Load("Web\main.html")
-    if (!color1 & !color2 & !color3 & !color4 & !color5 & !color6 & !color7)
+    if (isLightMode = 1)
     {
-        if (isLightMode = 1)
-        {
-            Logging(1, "Changing loader theme")
-            neutron.wnd.toggleTheme()
-        }
-    }
-    else {
-        if (theme != "ERROR" and color1 != "ERROR") ; $$$$ superior code $$$$
-        {
-            Logging(1, "Changing theme to " theme)
-            neutron.wnd.setTheme(color1, color2, color3, color4, color5, color6, color7)
-        }
+        Logging(1, "Changing loader theme")
+        neutron.wnd.toggleTheme()
     }
 
     guiheight := cheatsCount * 40 + 40
