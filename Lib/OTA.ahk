@@ -20,10 +20,10 @@ class OTA
             Logging(1,"A new version is available. Latest version: " latest_release)
             MsgBox, 68, %script% | %string_new_version%, %latest_release% | %string_changelog%`n`n%change_log%`n`n`n%string_want_download%
             IfMsgBox, Yes
-                OTA.download(download_url,latest_release)
+                OTA.download(download_url,filename)
         }
     }
-    download(download_url,tag)
+    download(download_url,filename)
     {
         UrlDownloadToFile, %download_url%, %A_ScriptDir%\%filename%
         Run, %A_ScriptDir%\%filename%
