@@ -25,7 +25,7 @@ class OTA
     }
     download(download_url,filename)
     {
-        UrlDownloadToFile, %download_url%, %A_ScriptDir%\%filename%
+        DownloadFile(download_url,A_ScriptDir "\" filename)
         Run, %A_ScriptDir%\%filename%
         ExitApp
     }

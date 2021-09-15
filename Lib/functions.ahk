@@ -78,7 +78,7 @@ Inject(neutron, event)
             IfNotExist, %A_AppData%\FET Loader\%dll%
             {
                 Logging(1,"Trying to download " dll " to " A_AppData "\FET Loader\" dll)
-                UrlDownloadToFile, https://github.com/%repo%/raw/%repobranch%/%dll%, %A_AppData%\FET Loader\%dll%
+                DownloadFile("https://github.com/" repo "/raw/" repobranch "/" dll,A_AppData "\FET Loader\" dll)
                 Logging(1,"Downloading from... https://github.com/" repo "/raw/" repobranch "/" dll)
                 if (ErrorLevel = "0")
                 {

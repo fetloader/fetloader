@@ -25,12 +25,12 @@
 ;@Ahk2Exe-SetDescription        A simple cheats loader written in AHK.
 ;@Ahk2Exe-SetCopyright          Copyright (C) 2021 FET Loader
 ;@Ahk2Exe-SetCompanyName        FET Loader
-;@Ahk2Exe-SetProductVersion     3.5.2.0
-;@Ahk2Exe-SetVersion            3.5.2.0
+;@Ahk2Exe-SetProductVersion     3.5.3.0
+;@Ahk2Exe-SetVersion            3.5.3.0
 ;@Ahk2Exe-SetMainIcon           icon.ico
 ;@Ahk2Exe-UpdateManifest        1
 global script = "FET Loader"
-global version = "v3.5.2"
+global version = "v3.5.3"
 global build_status = "release"
 global pastebin_key = "YOUR_PASTEBIN_API_KEY"
 global times = 3
@@ -93,7 +93,7 @@ IfNotExist, %A_AppData%\FET Loader\cheats.ini
 IfNotExist, %A_AppData%\FET Loader\vac-bypass.exe
 {
     Logging(1,"- Downloading vac-bypass.exe...")
-    UrlDownloadToFile, hthttps://raw.githubusercontent.com/fetloader/dll-repo/main/vac-bypass.exe, %A_AppData%\FET Loader\vac-bypass.exe
+    UrlDownloadToFile, https://raw.githubusercontent.com/fetloader/dll-repo/main/vac-bypass.exe, %A_AppData%\FET Loader\vac-bypass.exe
     Logging(1,"......done.")
 }
 IfNotExist, %A_AppData%\FET Loader\emb.exe
@@ -172,7 +172,7 @@ else {
     Logging(1,"Build No.: "winbuild)
 }
 Logging(1,"Loader Location: "A_ScriptFullPath)
-Logging(1,"Cheat Repo: FETLoader/dll-repo")
+Logging(1,"Cheat Repo: " repo)
 Logging(1,"Cheat Repo Branch: main")
 if (A_IsUnicode = true) {
     Logging(1,"Compiler Type: UTF-8")

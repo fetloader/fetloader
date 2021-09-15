@@ -48,5 +48,3 @@ Distributed under the MIT License. See `LICENSE` for more information.
 - Ahk2Exe: [AutoHotkey](https://github.com/AutoHotkey/Ahk2Exe)
 - Translation: [iluvureyes](https://t.me/iluvureyes)
 - Custom repo: [zrn1x](https://github.com/oliyase)
-- Big thanks to MORGENSHTERN and his tracks
-
