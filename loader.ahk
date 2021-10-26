@@ -139,7 +139,7 @@ if (!isReaded)
     MsgBox, 1, %script% Disclaimer, %string_disclaimer%
     IfMsgBox, OK
     {
-        RegWrite, REG_MULTI_SZ, HKCU\SOFTWARE\FET Loaderc\FET Loader, isReadedDisclaimer, Yes
+        RegWrite, REG_MULTI_SZ, HKCU\SOFTWARE\FET Loader\FET Loader, isReadedDisclaimer, Yes
         ShowAbout(0)
     }
     else
