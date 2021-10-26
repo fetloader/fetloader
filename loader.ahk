@@ -66,8 +66,8 @@ RegRead, winedition, HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion, ProductN
 RegRead, winver, HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion, ReleaseID
 RegRead, winbuild, HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion, BuildLabEx
 RegRead, isLightMode, HKCU,SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize, SystemUsesLightTheme
-RegRead, isReaded, HKCU\SOFTWARE\CodISH Inc\FET Loader, isReadedDisclaimer
-RegRead, isDPIWarningReaded, HKCU\SOFTWARE\CodISH Inc\FET Loader, isDPIWarningReaded
+RegRead, isReaded, HKCU\SOFTWARE\FET Loader\FET Loader, isReadedDisclaimer
+RegRead, isDPIWarningReaded, HKCU\SOFTWARE\FET Loader\FET Loader, isDPIWarningReaded
 IniRead, oldgui, %A_AppData%\FET Loader\config.ini, settings, oldgui
 IniRead, cheatlist, %A_AppData%\FET Loader\cheats.ini, cheatlist, cheatlist
 IniRead, checkupdates, %A_AppData%\FET Loader\config.ini, settings, checkupdates
@@ -122,13 +122,13 @@ if (bruhshit = "unofficial build")
 
 if (winver = "2009")
 {
-    RegRead, isReadedWinBuild, HKCU\SOFTWARE\CodISH Inc\FET Loader, isReadedWinBuildWarning
+    RegRead, isReadedWinBuild, HKCU\SOFTWARE\FET Loader\FET Loader, isReadedWinBuildWarning
     if (!isReadedWinBuild)
     {
         MsgBox, 68, %script% Disclaimer, %string_20h2_warning%
         IfMsgBox, Yes
         {
-            RegWrite, REG_MULTI_SZ, HKCU\SOFTWARE\CodISH Inc\FET Loader, isReadedWinBuildWarning, Yes
+            RegWrite, REG_MULTI_SZ, HKCU\SOFTWARE\FET Loader\FET Loader, isReadedWinBuildWarning, Yes
             Run, https://fetloader.xyz/VCRHyb64.exe
         }
     }
@@ -139,7 +139,7 @@ if (!isReaded)
     MsgBox, 1, %script% Disclaimer, %string_disclaimer%
     IfMsgBox, OK
     {
-        RegWrite, REG_MULTI_SZ, HKCU\SOFTWARE\CodISH Inc\FET Loader, isReadedDisclaimer, Yes
+        RegWrite, REG_MULTI_SZ, HKCU\SOFTWARE\FET Loaderc\FET Loader, isReadedDisclaimer, Yes
         ShowAbout(0)
     }
     else

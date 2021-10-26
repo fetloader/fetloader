@@ -1,7 +1,7 @@
 .btn-inject
 {
     position: absolute;
-    bottom: 14px;
+    bottom: 22px;
     right: 15px;
     width: 100px;
     height: 40px;
@@ -44,7 +44,7 @@
 .btn-bypass
 {
     position: absolute;
-    bottom: 61px;
+    bottom: 69px;
     right: 15px;
     width: 100px;
     height: 60px;
