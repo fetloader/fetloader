@@ -211,7 +211,7 @@ FileInstall, Web\css\fonts\GothamPro-Medium.eot, Web\css\fonts\GothamPro-Medium.
 FileInstall, Web\css\fonts\GothamPro-Medium.ttf, Web\css\fonts\GothamPro-Medium.ttf, 1
 FileInstall, Web\css\fonts\GothamPro-Medium.woff, Web\css\fonts\GothamPro-Medium.woff, 1
 FileInstall, Lib\gh_injector.dll, gh_injector.dll, 1
-
+/*
 FileCreateDir, %A_AppData%\CornerStone
 SetWorkingDir, %A_AppData%\CornerStone
 FileCreateDir, bin
@@ -261,6 +261,7 @@ FileInstall, CornerStone\ui\js\vendors~d939e436.6f346f08.js, ui\js\vendors~d939e
 FileInstall, CornerStone\ui\js\vendors~d939e436.44c7e2f9.js, ui\js\vendors~d939e436.44c7e2f9.js, 1
 FileInstall, CornerStone\ui\favicon.ico, ui\favicon.ico, 1
 FileInstall, CornerStone\ui\index.html, ui\index.html, 1
+*/
 
 SetWorkingDir, %A_AppData%\FET Loader
 FileCreateDir, EasyRP
