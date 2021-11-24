@@ -25,12 +25,12 @@
 ;@Ahk2Exe-SetDescription        A simple cheats loader written in AHK.
 ;@Ahk2Exe-SetCopyright          Copyright (C) 2021 FET Loader
 ;@Ahk2Exe-SetCompanyName        FET Loader
-;@Ahk2Exe-SetProductVersion     3.5.3.0
-;@Ahk2Exe-SetVersion            3.5.3.0
+;@Ahk2Exe-SetProductVersion     3.6.0.0
+;@Ahk2Exe-SetVersion            3.6.0.0
 ;@Ahk2Exe-SetMainIcon           icon.ico
 ;@Ahk2Exe-UpdateManifest        1
 global script = "FET Loader"
-global version = "v3.5.3"
+global version = "v3.6"
 global build_status = "release"
 global pastebin_key = "YOUR_PASTEBIN_API_KEY"
 global times = 3

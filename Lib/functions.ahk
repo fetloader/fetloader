@@ -39,6 +39,28 @@ Inject(neutron, event)
     {
         MsgBox % "[DEBUG] Trying to inject " event
     }
+    IniRead, repo, %A_AppData%\FET Loader\config.ini, settings, repo
+    IniRead, repobranch, %A_AppData%\FET Loader\config.ini, settings, repobranch
+    IniRead, isExecutable, %A_AppData%\FET Loader\cheats.ini, executable, %event%
+    IniRead, exelink, %A_AppData%\FET Loader\cheats.ini, links, %event%
+    if (isExecutable = 1)
+    {
+        Logging(1,"Trying to download " exelink " to " A_AppData "\FET Loader\" event ".exe")
+        DownloadFile(exelink,A_AppData "\FET Loader\" event ".exe")
+        if (ErrorLevel = "0")
+        {
+            Logging(1, "done.")
+        }
+        else
+        {
+            timesretrying = times - 1   
+            Logging(0, "something went wrong. retrying (" timesretrying " times")
+
+        }
+        Run, %A_AppData%\FET Loader\%event%.exe
+        Logging(1,"Trying to run "  A_AppData  "\FET Loader\" event ".exe")
+    }
+
     Process, Wait, csgo.exe, 1
     PID = %ErrorLevel%
 
@@ -62,17 +84,14 @@ Inject(neutron, event)
     if (PID > 0 and event != "Custom" and event != "CornerStone") ;govnokod mne poxui
     {
         IniRead, dll, %A_AppData%\FET Loader\cheats.ini, cheats, %event%
-        IniRead, repo, %A_AppData%\FET Loader\config.ini, settings, repo
-        IniRead, repobranch, %A_AppData%\FET Loader\config.ini, settings, repobranch
         IniRead, forceLoadLibrary, %A_AppData%\FET Loader\config.ini, settings, forceLoadLibrary
         IniRead, injectMethod, %A_AppData%\FET Loader\cheats.ini, inject, %event%
+
         if (forceLoadLibrary = "true")
         {
             injectMethod := "LoadLibrary"
-            msgbox, force ll
+            ;msgbox, force ll
         }
-        Logging(1,"Initialized dll injection. Method: " injectMethod ". DLL: " dll)
-
         Loop 3
         {   
             IfNotExist, %A_AppData%\FET Loader\%dll%
@@ -140,6 +159,8 @@ Inject(neutron, event)
             Return
         }
     }
+
+
     if (PID > 0 and event = "Custom")
     {
         IniRead, injectMethod, %A_AppData%\FET Loader\cheats.ini, inject, Custom
