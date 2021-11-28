@@ -25,13 +25,13 @@
 ;@Ahk2Exe-SetDescription        A simple cheats loader written in AHK.
 ;@Ahk2Exe-SetCopyright          Copyright (C) 2021 FET Loader
 ;@Ahk2Exe-SetCompanyName        FET Loader
-;@Ahk2Exe-SetProductVersion     3.6.0.0
-;@Ahk2Exe-SetVersion            3.6.0.0
+;@Ahk2Exe-SetProductVersion     4.0.0.0
+;@Ahk2Exe-SetVersion            4.0.0.0
 ;@Ahk2Exe-SetMainIcon           icon.ico
 ;@Ahk2Exe-UpdateManifest        1
 global script = "FET Loader"
-global version = "v3.6"
-global build_status = "release"
+global version = "v4.0-a1"
+global build_status = "debug"
 global pastebin_key = "YOUR_PASTEBIN_API_KEY"
 global times = 3
 
@@ -295,28 +295,29 @@ if (checkupdates = "true" and build_status = "release")
 }
 if (oldgui = "true")
 {
-    IniRead, cheatlist, %A_AppData%\FET Loader\cheats.ini, cheatlist, cheatlist
+    ;IniRead, cheatlist, %A_AppData%\FET Loader\cheats.ini, cheatlist, cheatlist
+    
+    Gui, Add, ListBox, x12 y9 w110 h140 +HwndHLB vCheat Choose1
+    Count:=LBEX_GetCount(HLB)
+    UrlDownloadToFile, http://127.0.0.1:5000/api?login=admin&password=admin, %A_AppData%\FET Loader\cheats.json
+    FileRead, jsonStr, cheats.json    
+    parsed := JSON.Load(jsonStr)
+    for i, obj in parsed
+    {
+        LBEX_Add(HLB,obj.title)
+    }
 	Gui, Font, s9
-	Gui, Show, w323 h165, %script% %version%
-	Gui, Add, ListBox, x12 y9 w110 h140 vCheat Choose1, %cheatlist%
+	
 	Gui, Add, Button, x172 y9 w90 h30 +Center gLoad, %string_load%
 	Gui, Add, Button, x172 y69 w90 h30 +Center gBypass, %string_bypass%
 	Gui, Add, Button, x132 y119 w65 h30 +Center gConfigOpen, %string_config%
 	Gui, Add, Button, x242 y119 w65 h30 +Center gShowAbout, %string_about%
+    Gui, Show, w323 h165, %script% %version%
 	Logging(1,"done.")
 	return
 }
 else
 {
-    IniRead, repo, %A_AppData%\FET Loader\config.ini, settings, repo
-    IniRead, repobranch, %A_AppData%\FET Loader\config.ini, settings, repobranch
-    newrepo = %repo%/%repobranch%/cheats.ini
-    FileRead, gui, Web\js\iniparser.bak
-    StringReplace, newgui, gui, fetloader/dll-repo/main/cheats.ini, %newrepo%, All
-    FileAppend, %newgui%, Web\js\iniparser.js
-    IniRead, cheatlist, %A_AppData%\FET Loader\cheats.ini, cheatlist, cheatlist
-	StringSplit, cheatss, cheatlist, |
-	cheatsCount := cheatss0 
     neutron := new NeutronWindow()
     neutron.Load("Web\main.html")
     if (isLightMode = 1)
@@ -324,12 +325,7 @@ else
         Logging(1, "Changing loader theme")
         neutron.wnd.toggleTheme()
     }
-
-    guiheight := cheatsCount * 40 + 40
-    if (guiheight < 320)
-    {
-        guiheight := 330
-    }
+    guiheight := 330
     neutron.Gui("-Resize")
     neutron.Show("w400 h" guiheight, script)
     return
@@ -348,6 +344,16 @@ NeutronClose:
 
 Load:
     Gui, Submit, NoHide
-    Inject(0,Cheat)
+    ;Inject(0,Cheat)
+    FileRead, jsonStr, cheats.json    
+    parsed := JSON.Load(jsonStr)
+    for i, obj in parsed
+    {
+        if (obj.title = Cheat)
+        {
+            link := obj.link
+            msgbox, Link for cheat: %Cheat% - %link%
+        }
+    }
     return
 

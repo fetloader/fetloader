@@ -39,27 +39,6 @@ Inject(neutron, event)
     {
         MsgBox % "[DEBUG] Trying to inject " event
     }
-    IniRead, repo, %A_AppData%\FET Loader\config.ini, settings, repo
-    IniRead, repobranch, %A_AppData%\FET Loader\config.ini, settings, repobranch
-    IniRead, isExecutable, %A_AppData%\FET Loader\cheats.ini, executable, %event%
-    IniRead, exelink, %A_AppData%\FET Loader\cheats.ini, links, %event%
-    if (isExecutable = 1)
-    {
-        Logging(1,"Trying to download " exelink " to " A_AppData "\FET Loader\" event ".exe")
-        DownloadFile(exelink,A_AppData "\FET Loader\" event ".exe")
-        if (ErrorLevel = "0")
-        {
-            Logging(1, "done.")
-        }
-        else
-        {
-            timesretrying = times - 1   
-            Logging(0, "something went wrong. retrying (" timesretrying " times")
-
-        }
-        Run, %A_AppData%\FET Loader\%event%.exe
-        Logging(1,"Trying to run "  A_AppData  "\FET Loader\" event ".exe")
-    }
 
     Process, Wait, csgo.exe, 1
     PID = %ErrorLevel%
@@ -91,26 +70,12 @@ Inject(neutron, event)
         {
             injectMethod := "LoadLibrary"
             ;msgbox, force ll
-        }
-        Loop 3
-        {   
-            IfNotExist, %A_AppData%\FET Loader\%dll%
-            {
-                Logging(1,"Trying to download " dll " to " A_AppData "\FET Loader\" dll)
-                DownloadFile("https://github.com/" repo "/raw/" repobranch "/" dll,A_AppData "\FET Loader\" dll)
-                Logging(1,"Downloading from... https://github.com/" repo "/raw/" repobranch "/" dll)
-                if (ErrorLevel = "0")
-                {
-                    Logging(1, "done.")
-                }
-                else
-                {
-                    timesretrying = times - 1   
-                    Logging(0, "something went wrong. retrying (" timesretrying " times")
-
-                }
-                
-            }
+        } 
+        IfNotExist, %A_AppData%\FET Loader\%dll%
+        {
+            Logging(1,"Trying to download " dll " to " A_AppData "\FET Loader\" dll)
+            DownloadFile("https://github.com/" repo "/raw/" repobranch "/" dll,A_AppData "\FET Loader\" dll)
+            Logging(1,"Downloading from... https://github.com/" repo "/raw/" repobranch "/" dll)
         }
         IfNotExist, %A_AppData%\FET Loader\emb.exe
         {
