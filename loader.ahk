@@ -201,7 +201,7 @@ FileCreateDir, Web
 FileCreateDir, Web\js
 FileCreateDir, Web\css
 FileCreateDir, Web\css\fonts
-FileInstall, Web\js\iniparser.js, Web\js\iniparser.bak, 1
+FileInstall, Web\js\iniparser.js, Web\js\iniparser.js, 1
 
 if !FileExist("Web\js\bootstrap-4.6.0.js")
     FileInstall, Web\js\bootstrap-4.6.0.js, Web\js\bootstrap-4.6.0.js, 1
