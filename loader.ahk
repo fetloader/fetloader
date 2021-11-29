@@ -31,7 +31,7 @@
 ;@Ahk2Exe-UpdateManifest        1
 global script = "FET Loader"
 global version = "v4.0-a1"
-global build_status = "debug"
+global build_status = "release"
 global pastebin_key = "YOUR_PASTEBIN_API_KEY"
 global times = 3
 
@@ -252,15 +252,11 @@ if (checkupdates = "true" and build_status = "release")
 
 if (!login)
 {
-    Gui, Login:New
-    Gui, Login:Add, Edit, x137 y19 w140 h20 vLogin, 
-    Gui, Login:Add, Edit, x137 y59 w140 h20 vPassword, 
-    Gui, Login:Add, Button, x137 y129 w140 h30 gAuth, Authorize
-    Gui, Login:Add, Text, x62 y19 w40 h20 , Login
-    Gui, Login:Add, Text, x62 y59 w50 h20 , Password
-    Gui, Login:Add, CheckBox, x137 y89 w140 h20 +Center vAnon gAnon, Login as anonymous
-    Gui, Login:Show, w418 h185, LOGIN GUI
-    return
+    Goto, Login
+}
+else
+{
+    Goto, Auth
 }
 
 GuiClose:
@@ -321,9 +317,22 @@ Auth:
         global login := Login
         global password := Password
     }
-    Logging(1,"Authorized with login: " login)
+    Logging(1,"Authorization with username: " login)
     Gui, Login:Destroy
+    Msgbox, Login: %login%`nPassword: %password%
+    UrlDownloadToFile, http://127.0.0.1:5000/api?login=%login%&password=%password%, %A_AppData%\FET Loader\cheats.json
+    FileRead, jsonStr, cheats.json    
+    global parsed := JSON.Load(jsonStr)
+    if (parsed.error = 401)
+    {
+        Msgbox, 16, %script%, Invalid username or password
+        Logging(2,"Invalid username or password")
+        Goto, Login
+    }
+    Logging(1,"Authorized user: " login)
     Gosub, ShowGui
+    IniWrite, %login%, %A_AppData%\FET Loader\config.ini, credentials, login
+    IniWrite, %password%, %A_AppData%\FET Loader\config.ini, credentials, password
 	Logging(1,"done.")
 }
 return
@@ -332,14 +341,9 @@ ShowGui:
 {
     if (oldgui = "true")
     {
-        ;IniRead, cheatlist, %A_AppData%\FET Loader\cheats.ini, cheatlist, cheatlist
         Gui, Old:New
         Gui, Old:Add, ListBox, x12 y9 w110 h140 +HwndHLB vCheat Choose1
         Count:=LBEX_GetCount(HLB)
-        Msgbox, Login: %login%`nPassword: %password%
-        UrlDownloadToFile, http://127.0.0.1:5000/api?login=%login%&password=%password%, %A_AppData%\FET Loader\cheats.json
-        FileRead, jsonStr, cheats.json    
-        parsed := JSON.Load(jsonStr)
         for i, obj in parsed
         {
             LBEX_Add(HLB,obj.title)
@@ -367,4 +371,19 @@ ShowGui:
         return
     }
 }
+return
+
+Login:
+Gui, Login:New
+Gui, Login:Add, Edit, x137 y19 w140 h20 vLogin, 
+Gui, Login:Add, Edit, x137 y59 w140 h20 vPassword, 
+Gui, Login:Add, Button, x137 y129 w140 h30 gAuth, Authorize
+Gui, Login:Add, Text, x62 y19 w40 h20 , Login
+Gui, Login:Add, Text, x62 y59 w50 h20 , Password
+Gui, Login:Add, CheckBox, x137 y89 w140 h20 +Center vAnon gAnon, Login as anonymous
+Gui, Login:Show, w418 h185, LOGIN GUI
+return
+
+LoginGuiClose:
+ExitApp
 return
