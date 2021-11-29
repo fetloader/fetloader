@@ -285,6 +285,11 @@ isGithubAvailable()
     result := DllCall("Wininet\InternetCheckConnection", Str, "https://github.com/", UInt, FLAG_ICC_FORCE_CONNECTION := 1, UInt, 0)
     return result
 }
+isFetAvailable()
+{
+    result := DllCall("Wininet\InternetCheckConnection", Str, "http://127.0.0.1:5000/", UInt, FLAG_ICC_FORCE_CONNECTION := 1, UInt, 0)
+    return result
+}
 isConfigValue(file,section,key,value)
 {   
     IniRead, output_key, %file%, %section%, %key%

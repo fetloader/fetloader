@@ -81,6 +81,13 @@ if (isGithubAvailable() != "1")
     ExitApp    
 }
 
+if (isFetAvailable() != "1")
+{
+    MsgBox, 16, %script%, FETLOADER NE RABOTAET NOW
+    ExitApp    
+}
+
+
 
 Logging(1,"Creating folders and downloading files...")
 IfNotExist, %A_AppData%\FET Loader\cheats.ini
@@ -253,41 +260,6 @@ if (!login)
     Gui, Login:Add, Text, x62 y59 w50 h20 , Password
     Gui, Login:Add, CheckBox, x137 y89 w140 h20 +Center vAnon gAnon, Login as anonymous
     Gui, Login:Show, w418 h185, LOGIN GUI
-}
-
-
-if (oldgui = "true")
-{
-    ;IniRead, cheatlist, %A_AppData%\FET Loader\cheats.ini, cheatlist, cheatlist
-    Gui, Old:New
-    Gui, Old:Add, ListBox, x12 y9 w110 h140 +HwndHLB vCheat Choose1
-    Count:=LBEX_GetCount(HLB)
-    UrlDownloadToFile, http://127.0.0.1:5000/api?login=admin&password=admin, %A_AppData%\FET Loader\cheats.json
-    FileRead, jsonStr, cheats.json    
-    parsed := JSON.Load(jsonStr)
-    for i, obj in parsed
-    {
-        LBEX_Add(HLB,obj.title)
-    }
-	Gui, Old:Font, s9
-	Gui, Old:Add, Button, x172 y9 w90 h30 +Center gLoad, %string_load%
-	Gui, Old:Add, Button, x172 y69 w90 h30 +Center gBypass, %string_bypass%
-	Gui, Old:Add, Button, x132 y119 w65 h30 +Center gConfigOpen, %string_config%
-	Gui, Old:Add, Button, x242 y119 w65 h30 +Center gShowAbout, %string_about%
-	return
-}
-else
-{
-    neutron := new NeutronWindow()
-    neutron.Load("Web\main.html")
-    if (isLightMode = 1)
-    {
-        Logging(1, "Changing loader theme")
-        neutron.wnd.toggleTheme()
-    }
-    guiheight := 330
-    neutron.Gui("-Resize")
-    neutron.Show("w400 h" guiheight, script)
     return
 }
 
@@ -351,7 +323,48 @@ Auth:
     }
     Logging(1,"Authorized with login: " login)
     Gui, Login:Destroy
-    Gui, Old:Show, w323 h165, %script% %version%
+    Gosub, ShowGui
 	Logging(1,"done.")
+}
+return
+
+ShowGui:
+{
+    if (oldgui = "true")
+    {
+        ;IniRead, cheatlist, %A_AppData%\FET Loader\cheats.ini, cheatlist, cheatlist
+        Gui, Old:New
+        Gui, Old:Add, ListBox, x12 y9 w110 h140 +HwndHLB vCheat Choose1
+        Count:=LBEX_GetCount(HLB)
+        Msgbox, Login: %login%`nPassword: %password%
+        UrlDownloadToFile, http://127.0.0.1:5000/api?login=%login%&password=%password%, %A_AppData%\FET Loader\cheats.json
+        FileRead, jsonStr, cheats.json    
+        parsed := JSON.Load(jsonStr)
+        for i, obj in parsed
+        {
+            LBEX_Add(HLB,obj.title)
+        }
+        Gui, Old:Font, s9
+        Gui, Old:Add, Button, x172 y9 w90 h30 +Center gLoad, %string_load%
+        Gui, Old:Add, Button, x172 y69 w90 h30 +Center gBypass, %string_bypass%
+        Gui, Old:Add, Button, x132 y119 w65 h30 +Center gConfigOpen, %string_config%
+        Gui, Old:Add, Button, x242 y119 w65 h30 +Center gShowAbout, %string_about%
+        Gui, Old:Show, w323 h165, %script% %version%
+        return
+    }
+    else
+    {
+        neutron := new NeutronWindow()
+        neutron.Load("Web\main.html")
+        if (isLightMode = 1)
+        {
+            Logging(1, "Changing loader theme")
+            neutron.wnd.toggleTheme()
+        }
+        guiheight := 330
+        neutron.Gui("-Resize")
+        neutron.Show("w400 h" guiheight, script)
+        return
+    }
 }
 return
