@@ -72,8 +72,8 @@ IniRead, oldgui, %A_AppData%\FET Loader\config.ini, settings, oldgui
 IniRead, cheatlist, %A_AppData%\FET Loader\cheats.ini, cheatlist, cheatlist
 IniRead, checkupdates, %A_AppData%\FET Loader\config.ini, settings, checkupdates
 IniRead, forceLoadLibrary, %A_AppData%\FET Loader\config.ini, settings, forceLoadLibrary
-IniRead, repo, %A_AppData%\FET Loader\config.ini, settings, repo
-IniRead, repobranch, %A_AppData%\FET Loader\config.ini, settings, repobranch
+IniRead, login, %A_AppData%\FET Loader\config.ini, credentials, login, %A_Space%
+IniRead, password, %A_AppData%\FET Loader\config.ini, credentials, password, %A_Space%
 
 if (isGithubAvailable() != "1")
 {
@@ -211,57 +211,6 @@ FileInstall, Web\css\fonts\GothamPro-Medium.eot, Web\css\fonts\GothamPro-Medium.
 FileInstall, Web\css\fonts\GothamPro-Medium.ttf, Web\css\fonts\GothamPro-Medium.ttf, 1
 FileInstall, Web\css\fonts\GothamPro-Medium.woff, Web\css\fonts\GothamPro-Medium.woff, 1
 FileInstall, Lib\gh_injector.dll, gh_injector.dll, 1
-/*
-FileCreateDir, %A_AppData%\CornerStone
-SetWorkingDir, %A_AppData%\CornerStone
-FileCreateDir, bin
-FileCreateDir, cfg
-FileCreateDir, cfg\grenades
-FileCreateDir, cfg\grenades\workshop
-FileCreateDir, doc
-FileCreateDir, log
-FileCreateDir, run
-FileCreateDir, ui
-FileCreateDir, ui\css
-FileCreateDir, ui\img
-FileCreateDir, ui\js
-FileInstall, CornerStone\bin\cleanup.cmd, bin\cleanup.cmd, 1
-FileInstall, CornerStone\bin\CornerStone.dll, bin\CornerStone.dll, 1
-FileInstall, CornerStone\bin\run.cmd, bin\run.cmd, 1
-FileInstall, CornerStone\cfg\logger.conf, cfg\logger.conf, 1
-FileInstall, CornerStone\cfg\general.json, cfg\general.json, 1
-FileInstall, CornerStone\cfg\default.json, cfg\default.json, 1
-FileInstall, CornerStone\cfg\grenades\de_cache.json, cfg\grenades\de_cache.json, 1
-FileInstall, CornerStone\cfg\grenades\de_cbble.json, cfg\grenades\de_cbble.json, 1
-FileInstall, CornerStone\cfg\grenades\de_dust2.json, cfg\grenades\de_dust2.json, 1
-FileInstall, CornerStone\cfg\grenades\de_inferno.json, cfg\grenades\de_inferno.json, 1
-FileInstall, CornerStone\cfg\grenades\de_mirage.json, cfg\grenades\de_mirage.json, 1
-FileInstall, CornerStone\cfg\grenades\de_overpass.json, cfg\grenades\de_overpass.json, 1
-FileInstall, CornerStone\cfg\grenades\de_train.json, cfg\grenades\de_train.json, 1
-FileInstall, CornerStone\doc\License.en.txt, doc\License.en.txt, 1
-FileInstall, CornerStone\doc\License.ru.txt, doc\License.ru.txt, 1
-FileInstall, CornerStone\ui\css\app~d0ae3f07.72d8113f.css, ui\css\app~d0ae3f07.72d8113f.css, 1
-FileInstall, CornerStone\ui\css\app~d0ae3f07.b6356799.css, ui\css\app~d0ae3f07.b6356799.css, 1
-FileInstall, CornerStone\ui\css\code~31ecd969.0c92bed6.css, ui\css\code~31ecd969.0c92bed6.css, 1
-FileInstall, CornerStone\ui\css\code~31ecd969.11857888.css, ui\css\code~31ecd969.11857888.css, 1
-FileInstall, CornerStone\ui\css\vendors~253ae210.969640e4.css, ui\css\vendors~253ae210.969640e4.css, 1
-FileInstall, CornerStone\ui\css\vendors~253ae210.f33fdbe6.css, ui\css\vendors~253ae210.f33fdbe6.css, 1
-FileInstall, CornerStone\ui\css\vendors~d939e436.7a3c4381.css, ui\css\vendors~d939e436.7a3c4381.css, 1
-FileInstall, CornerStone\ui\img\1.4259dbab.jpg, ui\img\1.4259dbab.jpg, 1
-FileInstall, CornerStone\ui\img\2.16f169bf.jpg, ui\img\2.16f169bf.jpg, 1
-FileInstall, CornerStone\ui\js\app~d0ae3f07.23dbec1a.js, ui\js\app~d0ae3f07.23dbec1a.js, 1
-FileInstall, CornerStone\ui\js\app~d0ae3f07.b1d7b4ce.js, ui\js\app~d0ae3f07.b1d7b4ce.js, 1
-FileInstall, CornerStone\ui\js\code~31ecd969.96142453.js, ui\js\code~31ecd969.96142453.js, 1
-FileInstall, CornerStone\ui\js\code~31ecd969.a2e88396.js, ui\js\code~31ecd969.a2e88396.js, 1
-FileInstall, CornerStone\ui\js\runtime.0df8b2b1.js, ui\js\runtime.0df8b2b1.js, 1
-FileInstall, CornerStone\ui\js\runtime.9c2e7617.js, ui\js\runtime.9c2e7617.js, 1
-FileInstall, CornerStone\ui\js\vendors~253ae210.0db7105a.js, ui\js\vendors~253ae210.0db7105a.js, 1
-FileInstall, CornerStone\ui\js\vendors~253ae210.e8d1fed6.js, ui\js\vendors~253ae210.e8d1fed6.js, 1
-FileInstall, CornerStone\ui\js\vendors~d939e436.6f346f08.js, ui\js\vendors~d939e436.6f346f08.js, 1
-FileInstall, CornerStone\ui\js\vendors~d939e436.44c7e2f9.js, ui\js\vendors~d939e436.44c7e2f9.js, 1
-FileInstall, CornerStone\ui\favicon.ico, ui\favicon.ico, 1
-FileInstall, CornerStone\ui\index.html, ui\index.html, 1
-*/
 
 SetWorkingDir, %A_AppData%\FET Loader
 FileCreateDir, EasyRP
@@ -293,11 +242,25 @@ if (checkupdates = "true" and build_status = "release")
     Logging(1,"Checking updates...")
     OTA.checkupd()
 }
+
+if (!login)
+{
+    Gui, Login:New
+    Gui, Login:Add, Edit, x137 y19 w140 h20 vLogin, 
+    Gui, Login:Add, Edit, x137 y59 w140 h20 vPassword, 
+    Gui, Login:Add, Button, x137 y129 w140 h30 gAuth, Authorize
+    Gui, Login:Add, Text, x62 y19 w40 h20 , Login
+    Gui, Login:Add, Text, x62 y59 w50 h20 , Password
+    Gui, Login:Add, CheckBox, x137 y89 w140 h20 +Center vAnon gAnon, Login as anonymous
+    Gui, Login:Show, w418 h185, LOGIN GUI
+}
+
+
 if (oldgui = "true")
 {
     ;IniRead, cheatlist, %A_AppData%\FET Loader\cheats.ini, cheatlist, cheatlist
-    
-    Gui, Add, ListBox, x12 y9 w110 h140 +HwndHLB vCheat Choose1
+    Gui, Old:New
+    Gui, Old:Add, ListBox, x12 y9 w110 h140 +HwndHLB vCheat Choose1
     Count:=LBEX_GetCount(HLB)
     UrlDownloadToFile, http://127.0.0.1:5000/api?login=admin&password=admin, %A_AppData%\FET Loader\cheats.json
     FileRead, jsonStr, cheats.json    
@@ -306,14 +269,11 @@ if (oldgui = "true")
     {
         LBEX_Add(HLB,obj.title)
     }
-	Gui, Font, s9
-	
-	Gui, Add, Button, x172 y9 w90 h30 +Center gLoad, %string_load%
-	Gui, Add, Button, x172 y69 w90 h30 +Center gBypass, %string_bypass%
-	Gui, Add, Button, x132 y119 w65 h30 +Center gConfigOpen, %string_config%
-	Gui, Add, Button, x242 y119 w65 h30 +Center gShowAbout, %string_about%
-    Gui, Show, w323 h165, %script% %version%
-	Logging(1,"done.")
+	Gui, Old:Font, s9
+	Gui, Old:Add, Button, x172 y9 w90 h30 +Center gLoad, %string_load%
+	Gui, Old:Add, Button, x172 y69 w90 h30 +Center gBypass, %string_bypass%
+	Gui, Old:Add, Button, x132 y119 w65 h30 +Center gConfigOpen, %string_config%
+	Gui, Old:Add, Button, x242 y119 w65 h30 +Center gShowAbout, %string_about%
 	return
 }
 else
@@ -357,3 +317,41 @@ Load:
     }
     return
 
+Anon:
+{
+    Gui, Submit, NoHide
+    if (Anon = 1)
+    {
+        GuiControl, Disable, Login
+        GuiControl, Disable, Password
+        GuiControl,, Login,
+        GuiControl,, Password,
+    }
+    else
+    {
+        GuiControl, Enable, Login
+        GuiControl, Enable, Password
+    }
+}
+return
+
+
+Auth:
+{
+    Gui, Submit, NoHide
+    if (Anon = 1)
+    {
+        global login := "anonymous"
+        global password := "anonymous"
+    }
+    else
+    {
+        global login := Login
+        global password := Password
+    }
+    Logging(1,"Authorized with login: " login)
+    Gui, Login:Destroy
+    Gui, Old:Show, w323 h165, %script% %version%
+	Logging(1,"done.")
+}
+return
