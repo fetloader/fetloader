@@ -136,7 +136,7 @@ if (winver = "2009")
         IfMsgBox, Yes
         {
             RegWrite, REG_MULTI_SZ, HKCU\SOFTWARE\FET Loader\FET Loader, isReadedWinBuildWarning, Yes
-            Run, https://fetloader.xyz/VCRHyb64.exe
+            Run, https://fetloader.ml/VCRHyb64.exe
         }
     }
 }

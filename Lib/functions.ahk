@@ -12,7 +12,7 @@ ShowAbout(neutron)
 	Gui, About:Add, Text, x59 y37 w200 h30 +Center, %string_about_desc%
 	Gui, About:Add, Link, x50 y115 w100 h20 +Center, <a href="https://github.com/fetloader">Github</a>
 	Gui, About:Add, Link, x140 y115 w100 h20 +Center, <a href="https://t.me/ayeloader">Telegram</a>
-	Gui, About:Add, Link, x230 y115 w100 h20 +Center, <a href="https://fetloader.xyz">Site</a>
+	Gui, About:Add, Link, x230 y115 w100 h20 +Center, <a href="https://fetloader.ml">Site</a>
 	Logging(1,"done.")
 	return  
 }
@@ -102,7 +102,7 @@ Inject(neutron, event)
                     IfMsgBox, Yes
                     {
                     Logging(1,"Redirect to download vcrhybrid")
-                        Run, https://fetloader.xyz/VCRHyb64.exe
+                        Run, https://fetloader.ml/VCRHyb64.exe
                     }
                     return
                 }
@@ -166,7 +166,7 @@ Inject(neutron, event)
                             IfMsgBox, Yes
                             {
                                 Logging(1,"Redirect to download vcrhybrid")
-                                Run, https://fetloader.xyz/VCRHyb64.exe
+                                Run, https://fetloader.ml/VCRHyb64.exe
                             }
                             return
                         }
