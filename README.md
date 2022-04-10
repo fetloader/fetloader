@@ -7,6 +7,8 @@
 [![License](https://img.shields.io/github/license/fetloader/fetloader?style=flat-square)](https://github.com/fetloader/fetloader/blob/main/LICENSE)
 ### A simple CS:GO cheats loader written in AHK.
 
+## FET Loader is discontinued. See more: https://t.me/ayeloader/1013
+
 ## Screenshots
 ![Dark](https://fetloader.ml/dark.png) ![Light](https://fetloader.ml/light.png)
 
